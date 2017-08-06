@@ -2,48 +2,64 @@
 ;;; Copyright (c) 2017, David Goldfarb
 
 (ns sodium.core
+  (:require-macros
+   [sodium.macros :refer [defcontrol def-simple-control]])
   (:require
    [clojure.spec.alpha :as s]
    [soda-ash.core :as sa]
+   [sodium.re-utils :refer [<sub >evt]]
    [sodium.utils :as utils]))
 
-(def forbidden-keywords #{:active :block :circular :className :compact :disabled :dividing :error :inline
-                          :inverted :loading :negative :onClick :positive :primary :required :secondary :sub
-                          :tabIndex :toggle})
+(defn >event
+  ([event]
+   (>event event ""))
+  ([event default]
+   (>event event default identity))
+  ([event default coercer]
+   #(>evt (let [value (.-value %2)]
+            (conj event
+                  (coercer (if (empty? value)
+                             default
+                             value)))))))
 
-(defn forbidden-keys [params]
-  (-> params
-      keys
-      set
-      (clojure.set/intersection forbidden-keywords)))
+(defn >atom
+  ([atom]
+   (>atom atom identity))
+  ([atom coercer]
+   #(->> (.-value %2) coercer (reset! atom))))
 
-(defn no-forbidden? [params]
-  (let [forbidden (forbidden-keys params)]
-    (if (empty? forbidden)
-      true
-      (do (js/console.error "Found forbidden keys: " forbidden "in " params)
-        false))))
+(defn list-option [value text]
+  {:key value :value value :text text})
 
-(defn header [& {:keys [as attached block? children class-name color content disabled? dividing?
-                        floated icon image inverted? size sub? subheader text-align]
-                 :as params}]
-  {:pre [(no-forbidden? params)]}
-  [sa/Header (utils/camelize-map-keys params)])
+(defn dropdown-list [items value-fn text-fn]
+  (mapv (fn [item]
+         (list-option (value-fn item) (text-fn item)))
+       items))
 
-(defn form-button [& {:keys [active? animated as attached basic
-                             children circular? class-name color compact? content control
-                             data-tooltip
-                             disabled? error? floated fluid icon
-                             inline? inverted? label label-position loading? negative?
-                             on-click positive? primary? required? secondary? size tab-index
-                             toggle? type width]
-                      :as params}]
-  {:pre [(no-forbidden? params)
-         (utils/validate (s/or :dispatch ::utils/event-vector :fn ifn?) on-click)
+(defn <atom
+  ([atom]
+   (<atom atom nil))
+  ([atom default]
+   (<atom atom default identity))
+  ([atom default access-fn]
+   (or (access-fn @atom) default)))
+
+(defcontrol form-button [params]
+  {::key-sets [:basic :form-field :button]
+   ::keys [data-tooltip]
+   :pre [(utils/validate (s/nilable ifn?) on-click)
          (utils/validate (s/nilable string?) data-tooltip)]}
   [sa/FormButton (-> params
                      (assoc :type (or type "button"))
-                     (assoc :on-click (if (vector? on-click)
-                                        #(utils/>evt on-click)
-                                        on-click))
-                     utils/camelize-map-keys)])
+                     (utils/camelize-map-keys :exclude [:data-tooltip]))])
+
+(def-simple-control checkbox   sa/Checkbox  [:basic :checkbox])
+(def-simple-control dropdown   sa/Dropdown  [:basic :dropdown])
+(def-simple-control form       sa/Form      [:basic :form])
+(def-simple-control form-input sa/FormInput [:basic :form-field :input :input-html])
+(def-simple-control form-group sa/FormGroup [:basic :form-group])
+(def-simple-control grid       sa/Grid      [:basic :grid])
+(def-simple-control header     sa/Header    [:basic :header])
+(def-simple-control input      sa/Input     [:basic :form-field :input :input-html])
+(def-simple-control rail       sa/Rail      [:basic :rail])
+(def-simple-control text-area  sa/TextArea  [:basic :form-field :text-area :input-html])
