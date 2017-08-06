@@ -30,8 +30,20 @@
   {:pre [(no-forbidden? params)]}
   [sa/Header (utils/camelize-map-keys params)])
 
+(defn event-dispatcher [event]
+  #(utils/>evt (if-let [value (.-value %2)]
+                 (conj event value)
+                 event)))
+
+(defn subst-key [m from-key to-key update-fn]
+  (if-let [raw (from-key m)]
+    (-> m
+        (dissoc from-key)
+        (assoc to-key (update-fn raw)))
+    m))
+
 (defn form-button [& {:keys [active? animated as attached basic
-                             children circular? class-name color compact? content control
+                             children circular? class-name ::click-event color compact? content control
                              data-tooltip
                              disabled? error? floated fluid icon
                              inline? inverted? label label-position loading? negative?
@@ -39,11 +51,10 @@
                              toggle? type width]
                       :as params}]
   {:pre [(no-forbidden? params)
-         (utils/validate (s/or :dispatch ::utils/event-vector :fn ifn?) on-click)
+         (utils/validate (s/nilable ifn?) on-click)
+         (utils/validate (s/nilable ::utils/event-vector) click-event)
          (utils/validate (s/nilable string?) data-tooltip)]}
   [sa/FormButton (-> params
                      (assoc :type (or type "button"))
-                     (assoc :on-click (if (vector? on-click)
-                                        #(utils/>evt on-click)
-                                        on-click))
+                     (subst-key ::click-event :on-click event-dispatcher)
                      utils/camelize-map-keys)])
