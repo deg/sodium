@@ -11,10 +11,20 @@ A Wrapper around soda-ash and semantic-ui that is friendlier to re-frame
 
 ## Usage
 
-FIXME
+### Running
+
+I've only tested running this library within other projects. Sym-link to this project
+from the checkouts directory of the project. (See the
+[Leiningen notes](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#checkout-dependencies)
+for a discussion of this feature).  If you are me, a working example is at
+~/Documents/git/projects/receipts/client/checkouts.
+
+### Testing
+
+`lein doo phantom test auto`
 
 ## License
 
-Copyright © 2017 David Goldfarb
+Licensed under the Eclipse Public License.
 
-Distributed under the MIT License.
+Copyright © 2017, David Goldfarb <deg@degel.com>
