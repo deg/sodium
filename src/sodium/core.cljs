@@ -2,6 +2,8 @@
 ;;; Copyright (c) 2017, David Goldfarb
 
 (ns sodium.core
+  (:require-macros
+   [sodium.macros :refer [defcontrol]])
   (:require
    [clojure.spec.alpha :as s]
    [soda-ash.core :as sa]
@@ -24,12 +26,6 @@
       (do (js/console.error "Found forbidden keys: " forbidden "in " params)
         false))))
 
-(defn header [& {:keys [as attached block? children class-name color content disabled? dividing?
-                        floated icon image inverted? size sub? subheader text-align]
-                 :as params}]
-  {:pre [(no-forbidden? params)]}
-  [sa/Header (utils/camelize-map-keys params)])
-
 (defn event-dispatcher [event]
   #(utils/>evt (if-let [value (.-value %2)]
                  (conj event value)
@@ -42,14 +38,7 @@
         (assoc to-key (update-fn raw)))
     m))
 
-(defn form-button [& {:keys [active? animated as attached basic
-                             children circular? class-name ::click-event color compact? content control
-                             data-tooltip
-                             disabled? error? floated fluid icon
-                             inline? inverted? label label-position loading? negative?
-                             on-click positive? primary? required? secondary? size tab-index
-                             toggle? type width]
-                      :as params}]
+(defcontrol form-button [:basic :form :button] [params [::click-event data-tooltip]]
   {:pre [(no-forbidden? params)
          (utils/validate (s/nilable ifn?) on-click)
          (utils/validate (s/nilable ::utils/event-vector) click-event)
@@ -58,3 +47,8 @@
                      (assoc :type (or type "button"))
                      (subst-key ::click-event :on-click event-dispatcher)
                      utils/camelize-map-keys)])
+
+(defcontrol header [:basic :header] [params []]
+  {:pre [(no-forbidden? params)]}
+  [sa/Header (utils/camelize-map-keys params)])
+
