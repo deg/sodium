@@ -9,12 +9,24 @@
   #{:as             ;; custom
     :children       ;; node
     :class-name     ;; string
-    :disabled?      ;; bool
     })
 
 (def form-params
-  #{
-    :control        ;; custom (mutually exclusive with :children)
+  #{:action
+    :error?
+    :inverted?
+    :loading?
+    :on-submit
+    :reply?
+    :size
+    :success?
+    :warning?
+    :widths
+    })
+
+(def form-field-params
+  #{:control        ;; custom (mutually exclusive with :children)
+    :disabled?      ;; bool
     :error?         ;; bool
     :inline?        ;; bool
     :label          ;; node|object (mutually exclusive with :children)
@@ -65,12 +77,43 @@
     :textAlign
     })
 
+(def input-params
+  #{:action
+    :action-position
+    :error?
+    :fluid?
+    :focus?
+    :icon
+    :icon-position
+    :input
+    :inverted?
+    :label
+    :label-position
+    :loading
+    :on-change
+    :size
+    :tab-index
+    :transparent?
+    :type
+    })
+
+(def rail-params
+  #{:attached?
+    :close
+    :dividing?
+    :internal?
+    :position
+    :size})
+
 (defn key-set [key]
   (case key
-    :basic  basic-params
-    :button button-params
-    :form   form-params
-    :header header-params
+    :basic      basic-params
+    :button     button-params
+    :form       form-params
+    :form-field form-field-params
+    :header     header-params
+    :input      input-params
+    :rail       rail-params
     nil))
 
 (defn merge-keys [keys key-sets]
@@ -81,8 +124,6 @@
        (sort-by name)
        (into [])))
 
-(defmacro defcontrol [name key-sets [params keys]  & body]
-  `(defn ~name [& {:keys ~(merge-keys keys key-sets) :as ~params}]
-     ~@body))
-
-
+(defmacro defcontrol [name [[params-var key-sets keys] & other-params] & control-body]
+  `(defn ~name [{:keys ~(merge-keys keys key-sets) :as ~params-var} ~@other-params]
+     ~@control-body))

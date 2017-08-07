@@ -26,10 +26,23 @@
       (do (js/console.error "Found forbidden keys: " forbidden "in " params)
         false))))
 
-(defn event-dispatcher [event]
-  #(utils/>evt (if-let [value (.-value %2)]
-                 (conj event value)
-                 event)))
+(defn >event
+  ([event]
+   (>event event ""))
+  ([event default]
+   (>event event default identity))
+  ([event default coercer]
+   #(utils/>evt (let [value (.-value %2)]
+                  (conj event
+                        (coercer (if (empty? value)
+                                   default
+                                   value)))))))
+
+(defn >atom [atom]
+  #(reset! atom (.-value %2)))
+
+(defn- vconcat [& vecs]
+  (vec (apply concat vecs)))
 
 (defn subst-key [m from-key to-key update-fn]
   (if-let [raw (from-key m)]
@@ -38,17 +51,30 @@
         (assoc to-key (update-fn raw)))
     m))
 
-(defcontrol form-button [:basic :form :button] [params [::click-event data-tooltip]]
-  {:pre [(no-forbidden? params)
-         (utils/validate (s/nilable ifn?) on-click)
-         (utils/validate (s/nilable ::utils/event-vector) click-event)
-         (utils/validate (s/nilable string?) data-tooltip)]}
-  [sa/FormButton (-> params
-                     (assoc :type (or type "button"))
-                     (subst-key ::click-event :on-click event-dispatcher)
-                     utils/camelize-map-keys)])
-
-(defcontrol header [:basic :header] [params []]
+(defcontrol header [[params [:basic :header] []]]
   {:pre [(no-forbidden? params)]}
   [sa/Header (utils/camelize-map-keys params)])
 
+(defcontrol form [[params [:basic :form] []] & body]
+  (vconcat [sa/Form (utils/camelize-map-keys params)]
+           body))
+
+(defcontrol form-button [[params [:basic :form-field :button] [data-tooltip]]]
+  {:pre [(no-forbidden? params)
+         (utils/validate (s/nilable ifn?) on-click)
+         (utils/validate (s/nilable string?) data-tooltip)]}
+  [sa/FormButton (-> params
+                     (assoc :type (or type "button"))
+                     utils/camelize-map-keys)])
+
+(defcontrol form-input [[params [:basic :form-field :input] []] & body]
+  (vconcat [sa/FormInput (utils/camelize-map-keys params)]
+           body))
+
+(defcontrol input [[params [:basic :form-field :input] []] & body]
+  (vconcat [sa/Input (utils/camelize-map-keys params)]
+           body))
+
+(defcontrol rail [[params [:basic :rail] []] & body]
+  (vconcat [sa/Rail (utils/camelize-map-keys params)]
+           body))
