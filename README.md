@@ -20,19 +20,21 @@ These are all defined in `sodium.core`
 
 # Clojure-friendly naming conventions
 
-... controls
-... parameters
+Controls and parameters in kebab-case (`:on-change`) rather than JavaScript-friendly
+camel-case (`onChange`).
 
 # Parameter type-checking
 
-... pending
+... pending.  For now, just starting to check if parameters are valid.
 
 # A few helpful utility functions
 
 ## In `sodium.utils`
 - `validate` - Wrapper for Clojure specs checking in pre-conditions.
-- `<sub` and `>evt` - Re-frame wrappers, taken from <https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions>
 - "Camelize" functions - Convert Clojure-style names to JavaScript style
+
+## In `sodium.re-utils`
+- `<sub` and `>evt` - Re-frame wrappers, taken from <https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions>
 
 ## In `sodium.chars`
 - `sodium.chars\em-dash` - Unicode em-dash character
@@ -51,7 +53,7 @@ These are all defined in `sodium.core`
 ### Running
 
 I have not yet released Sodium to Clojars. I've only tested running this library within
-other projects. Sym-link to this project from the checkouts directory of the
+other projects. Sym-link to this project from the checkouts directory of your
 project. (See the
 [Leiningen notes](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#checkout-dependencies)
 for a discussion of this feature).  If you are me, a working example is at

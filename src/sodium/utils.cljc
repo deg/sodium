@@ -4,20 +4,16 @@
 (ns sodium.utils
   (:require
    [clojure.spec.alpha :as s]
-   [clojure.string :as str]
-   [re-frame.core :as re-frame]))
-
-;; Nice sugar from https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions
-(def <sub "Shorthand for re-frame subscribe and deref."
-  (comp deref re-frame/subscribe))
-(def >evt "Shorthand for re-frame dispatch to event."
-  re-frame/dispatch)
+   [clojure.string :as str]))
 
 (defn validate
   "Like s/valid?, but show the error like s/assert. Useful for pre-conditions."
   [spec x]
   (or (s/valid? spec x)
       (s/explain spec x)))
+
+(defn vconcat [& vecs]
+  (vec (apply concat vecs)))
 
 (s/def ::event-vector (s/cat :event keyword? :params (s/* any?)))
 
@@ -59,6 +55,14 @@
   (reduce-kv (fn [m k v] (assoc m (camelize-key k) v))
              {} m))
 
+(defn err [& strings]
+  (apply #?(:clj println :cljs js/console.error) strings))
 
-
-
+(defn all-keys-valid? [keys universe]
+  {:pre [(validate set? universe)]}
+  (if (clojure.set/subset? (set keys) (set universe))
+    true
+    (run! (fn [key]
+            (when-not (contains? universe key)
+              (err "Keyword " key " is invalid. Not in " universe)))
+          keys)))

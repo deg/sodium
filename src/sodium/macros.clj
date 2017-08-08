@@ -2,13 +2,71 @@
 ;;; Copyright (c) 2017, David Goldfarb
 
 (ns sodium.macros
-  #_(:require
-     [soda-ash-macros :refer [semantic-ui-react-tags]]))
+  (:require
+   [clojure.spec.alpha :as s]
+   [sodium.utils :as utils]
+   #_[soda-ash-macros :refer [semantic-ui-react-tags]]))
+
 
 (def basic-params
   #{:as             ;; custom
     :children       ;; node
     :class-name     ;; string
+    })
+
+(def dropdown-params
+  #{:addition-label
+    :addition-position
+    :allow-additions
+    :basic?
+    :button?
+    :close-on-blur?
+    :close-on-change?
+    :compact?
+    :default-open?
+    :default-selected-label
+    :default-value
+    :disabled?
+    :error?
+    :floating?
+    :fluid?
+    :header
+    :icon
+    :inline?
+    :item?
+    :labeled?
+    :loading?
+    :min-characters
+    :multiple?
+    :no-results-message
+    :on-add-item
+    :on-blur
+    :on-change
+    :on-click
+    :on-close
+    :on-focus
+    :on-label-click
+    :on-mouse-down
+    :on-open
+    :on-search-change
+    :open?
+    :open-on-focus?
+    :options
+    :placehoder
+    :pointing
+    :render-label
+    :scrolling?
+    :search
+    :search-input
+    :select-on-blur
+    :selected-label
+    :selection
+    :simple?
+    :tab-index
+    :test
+    :trigger
+    :upward?
+    :value
     })
 
 (def form-params
@@ -95,6 +153,8 @@
     :tab-index
     :transparent?
     :type
+    :value    ;; [TODO] NOT IN LIST ... check!
+    :step     ;; [TODO] NOT IN LIST ... check!
     })
 
 (def rail-params
@@ -109,6 +169,7 @@
   (case key
     :basic      basic-params
     :button     button-params
+    :dropdown   dropdown-params
     :form       form-params
     :form-field form-field-params
     :header     header-params
@@ -124,6 +185,18 @@
        (sort-by name)
        (into [])))
 
-(defmacro defcontrol [name [[params-var key-sets keys] & other-params] & control-body]
-  `(defn ~name [{:keys ~(merge-keys keys key-sets) :as ~params-var} ~@other-params]
-     ~@control-body))
+(defmacro defcontrol [name [params-var & other-params]
+                      {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
+                      & control-body]
+  {:pre [(utils/validate symbol? name)
+         (utils/validate symbol? params-var)]}
+  (let [all-keys (merge-keys keys key-sets)]
+    `(defn ~name [{:keys ~all-keys :as ~params-var} ~@other-params]
+       {:pre ~(utils/vconcat pre
+                             `[(utils/all-keys-valid? (keys ~params-var)
+                                                      ~(set (map keyword all-keys)))])
+        :post ~post}
+       ~@control-body)))
+
+
+
