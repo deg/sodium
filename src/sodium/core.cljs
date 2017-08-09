@@ -26,7 +26,9 @@
   ([atom]
    (>atom atom identity))
   ([atom coercer]
-   #(->> (.-value %2) coercer (reset! atom))))
+   #(->> (or (.-value %2) (.-checked %2))
+         coercer
+         (reset! atom))))
 
 (defn list-option [value text]
   {:key value :value value :text text})
@@ -54,6 +56,7 @@
                      (utils/camelize-map-keys :exclude [:data-tooltip]))])
 
 (def-simple-control checkbox   sa/Checkbox  [:basic :checkbox])
+(def-simple-control container  sa/Container [:basic :container])
 (def-simple-control dropdown   sa/Dropdown  [:basic :dropdown])
 (def-simple-control form       sa/Form      [:basic :form])
 (def-simple-control form-input sa/FormInput [:basic :form-field :input :input-html])
@@ -61,5 +64,7 @@
 (def-simple-control grid       sa/Grid      [:basic :grid])
 (def-simple-control header     sa/Header    [:basic :header])
 (def-simple-control input      sa/Input     [:basic :form-field :input :input-html])
+(def-simple-control menu       sa/Menu      [:basic :menu])
+(def-simple-control menu-item  sa/MenuItem  [:basic :menu-item])
 (def-simple-control rail       sa/Rail      [:basic :rail])
 (def-simple-control text-area  sa/TextArea  [:basic :form-field :text-area :input-html])

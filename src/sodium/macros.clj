@@ -45,6 +45,13 @@
               :type
               :value])
 
+
+;;; From https://react.semantic-ui.com/elements/container
+(add-key-set :container
+             [:fluid?
+              :text
+              :text-align])
+
 ;;; From https://react.semantic-ui.com/modules/dropdown
 (add-key-set :dropdown
              [:addition-label
@@ -220,11 +227,55 @@
               :type
               ])
 
+
 ;;; HTML input parameters not listed in the semantic-ui docs
 (add-key-set :input-html
              [:value
               :step
               :placeholder
+              ])
+
+
+;;; From https://react.semantic-ui.com/collections/menu
+(add-key-set :menu
+             [:active-index
+              :attached
+              :color
+              :compact?
+              :default-active-index
+              :fixed
+              :floated
+              :fluid?
+              :icon
+              :inverted?
+              :items
+              :on-item-click
+              :pagination?
+              :pointing?
+              :secondary?
+              :size
+              :stackable?
+              :tabular?
+              :text?
+              :vertical?
+              :widths
+              ])
+
+
+;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Item)
+(add-key-set :menu-item
+             [:active?
+              :color
+              :content
+              :disabled?
+              :fitted
+              :header?
+              :icon
+              :index
+              :link?
+              :name
+              :on-click
+              :position
               ])
 
 ;;; From https://react.semantic-ui.com/elements/rail
@@ -254,6 +305,10 @@
        (sort-by name)
        (into [])))
 
+
+;;; [TODO] It would be nice to make the properties map be optional like it is
+;;;        when using vanilla soda-ash. But, I don't see how to do that, and
+;;;        still retain a nice arglist display.
 (defmacro defcontrol [name [params-var & other-params]
                       {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
                       & control-body]
