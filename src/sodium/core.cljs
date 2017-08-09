@@ -3,6 +3,7 @@
 
 (ns sodium.core
   (:require-macros
+   [sodium.keys]
    [sodium.macros :refer [defcontrol def-simple-control]])
   (:require
    [clojure.spec.alpha :as s]
