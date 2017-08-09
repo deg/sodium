@@ -210,6 +210,7 @@
 (add-key-set :input
              [:action
               :action-position
+              :default-value           ;; *** NOT LISTED IN DOC!
               :error?
               :fluid?
               :focus?

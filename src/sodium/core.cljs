@@ -67,4 +67,4 @@
 (def-simple-control menu       sa/Menu      [:basic :menu])
 (def-simple-control menu-item  sa/MenuItem  [:basic :menu-item])
 (def-simple-control rail       sa/Rail      [:basic :rail])
-(def-simple-control text-area  sa/TextArea  [:basic :form-field :text-area :input-html])
+(def-simple-control text-area  sa/TextArea  [:basic :form-field :input :input-html :text-area])
