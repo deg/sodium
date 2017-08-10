@@ -5,18 +5,14 @@
   (:require
    [clojure.spec.alpha :as s]
    [sodium.utils :as utils]
+   [sodium.keys]
    #_[soda-ash-macros :refer [semantic-ui-react-tags]]))
 
 
-;;; Valid keys, used for paramter checking below.
-;;; Populated in keys.clj
-(def ui-key-set-map (atom {}))
-
-(defn key-set [key]
-  (key @ui-key-set-map))
-
-(defn add-key-set [key key-set]
-  (swap! ui-key-set-map assoc key (set key-set)))
+;;; Force early load of key sets. We need them available before the
+;;; defcontrol macro is expanded.
+;;; [TODO] What's the best way to clean up this hack?
+(sodium.keys/key-set :basic)
 
 
 (defn merge-keys

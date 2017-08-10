@@ -1,8 +1,16 @@
 ;;; Author: David Goldfarb (deg@degel.com)
 ;;; Copyright (c) 2017, David Goldfarb
 
-(ns sodium.keys
-  [:require [sodium.macros :refer [add-key-set]]])
+(ns sodium.keys)
+
+
+(def ui-key-set-map (atom {}))
+
+(defn key-set [key]
+  (key @ui-key-set-map))
+
+(defn add-key-set [key key-set]
+  (swap! ui-key-set-map assoc key (set key-set)))
 
 
 ;;; Common parameters; elided from the other sets below
