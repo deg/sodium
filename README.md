@@ -12,10 +12,15 @@ Sodium offers the following:
 
 # Cleaner inter-op between Semantic-UI and [re-frame](https://github.com/Day8/re-frame)
 
-These are all defined in `sodium.core`
+`sodium.core/>event` and `sodium.core/>atom` - Create `:on-*` handlers to pass a value
+to a re-frame event or react atom.
 
-... >event
-... >atom
+`sodium.core/<atom` - Get a value from a react atom.
+
+`sodium.core/defcontrol` and `sodium.core/def-simple-control` Define a control;
+typically a thin wrapper around the Soda-ash control, to give parameter checking,
+etc. (see below).  Soon, Sodium will contain definitions wrapping all the Soda-ash
+(Semantic-UI) controls, but we are not there yet.
 
 
 # Clojure-friendly naming conventions
@@ -25,7 +30,12 @@ camel-case (`onChange`).
 
 # Parameter type-checking
 
-... pending.  For now, just starting to check if parameters are valid.
+For now, just starting to check if parameters are valid. This is a bit of a mixed
+blessing, because I've not yet found a definitive list of all the valid parameters. So,
+this may be overly restrictive.
+
+I will, soon, add an option to partially disable checking. But, NYI. For now, you can
+call the Soda-ash function directly. `>event` and friends will work just fine.
 
 # A few helpful utility functions
 
@@ -37,8 +47,8 @@ camel-case (`onChange`).
 - `<sub` and `>evt` - Re-frame wrappers, taken from <https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions>
 
 ## In `sodium.chars`
-- `sodium.chars\em-dash` - Unicode em-dash character
 
+Definitions for a few common Unicode characters.
 
 
 ## Useful links (for now)

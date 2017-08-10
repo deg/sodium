@@ -14,4 +14,3 @@
 
 (def >evt "Shorthand for re-frame dispatch to event."
   re-frame/dispatch)
-

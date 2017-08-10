@@ -7,6 +7,9 @@
    [sodium.utils :as utils]
    #_[soda-ash-macros :refer [semantic-ui-react-tags]]))
 
+
+;;; Valid keys, used for paramter checking below.
+;;; Populated in keys.clj
 (def ui-key-set-map (atom {}))
 
 (defn key-set [key]
@@ -16,7 +19,9 @@
   (swap! ui-key-set-map assoc key (set key-set)))
 
 
-(defn merge-keys [keys key-sets]
+(defn merge-keys
+  "Combined keys with all the elements of the sets of keys in key-sets."
+  [keys key-sets]
   (->> (reduce (fn [so-far key]
                  (into so-far (map #(-> % name symbol) (key-set key))))
                (set keys) key-sets)
@@ -28,9 +33,10 @@
 ;;; [TODO] It would be nice to make the properties map be optional like it is
 ;;;        when using vanilla soda-ash. But, I don't see how to do that, and
 ;;;        still retain a nice arglist display.
-(defmacro defcontrol [name [params-var & other-params]
-                      {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
-                      & control-body]
+(defmacro defcontrol
+  [name [params-var & other-params]
+   {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
+   & control-body]
   {:pre [(utils/validate symbol? name)
          (utils/validate symbol? params-var)]}
   (let [all-keys (merge-keys keys key-sets)]
