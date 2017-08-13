@@ -3,7 +3,7 @@
 
 (ns sodium.core
   (:require-macros
-   [sodium.macros :refer [defcontrol def-simple-control]])
+   [sodium.macros :refer [defcomponent def-simple-component]])
   (:require
    [clojure.spec.alpha :as s]
    [soda-ash.core :as sa]
@@ -68,7 +68,7 @@
 
 (defn <atom
   "Get a value from an atom. Suitable to use, e.g., as the :value or
-  :default-value parameter to a control.
+  :default-value parameter to a component.
   Atom is the atom to be dereferenced. It will be translated by access-fn.
   If null, default will be supplied instead."
   ([atom]
@@ -79,28 +79,28 @@
    (or (access-fn @atom) default)))
 
 
-;;; Controls that we supply so far. More coming soon.
+;;; Components that we supply so far. More coming soon.
 ;;; The final argument here is a descriptor the acceptable parameters.
 ;;; For more details about this, see keys.clj and macros.clj
-(def-simple-control checkbox   sa/Checkbox  [:basic :checkbox])
-(def-simple-control container  sa/Container [:basic :container])
-(def-simple-control dropdown   sa/Dropdown  [:basic :dropdown])
-(def-simple-control form       sa/Form      [:basic :form])
-(def-simple-control form-input sa/FormInput [:basic :form-field :input :input-html])
-(def-simple-control form-group sa/FormGroup [:basic :form-group])
-(def-simple-control grid       sa/Grid      [:basic :grid])
-(def-simple-control header     sa/Header    [:basic :header])
-(def-simple-control input      sa/Input     [:basic :form-field :input :input-html])
-(def-simple-control menu       sa/Menu      [:basic :menu])
-(def-simple-control menu-item  sa/MenuItem  [:basic :menu-item])
-(def-simple-control rail       sa/Rail      [:basic :rail])
-(def-simple-control text-area  sa/TextArea  [:basic :form-field :input :input-html :text-area])
+(def-simple-component checkbox   sa/Checkbox  [:basic :checkbox])
+(def-simple-component container  sa/Container [:basic :container])
+(def-simple-component dropdown   sa/Dropdown  [:basic :dropdown])
+(def-simple-component form       sa/Form      [:basic :form])
+(def-simple-component form-input sa/FormInput [:basic :form-field :input :input-html])
+(def-simple-component form-group sa/FormGroup [:basic :form-group])
+(def-simple-component grid       sa/Grid      [:basic :grid])
+(def-simple-component header     sa/Header    [:basic :header])
+(def-simple-component input      sa/Input     [:basic :form-field :input :input-html])
+(def-simple-component menu       sa/Menu      [:basic :menu])
+(def-simple-component menu-item  sa/MenuItem  [:basic :menu-item])
+(def-simple-component rail       sa/Rail      [:basic :rail])
+(def-simple-component text-area  sa/TextArea  [:basic :form-field :input :input-html :text-area])
 
-;;; This is (at least for now) how we define controls that don't fit
-;;; into the def-simple-control cookie-cutter regime.
+;;; This is (at least for now) how we define components that don't fit
+;;; into the def-simple-component cookie-cutter regime.
 ;;; Actually, all that's really non-standard here is the supplying
 ;;; of "button" as the default type.
-(defcontrol form-button [params]
+(defcomponent form-button [params]
   {::key-sets [:basic :form-field :button]
    ::keys [data-tooltip]
    :pre [(utils/validate (s/nilable ifn?) on-click)

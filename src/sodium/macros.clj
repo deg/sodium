@@ -5,21 +5,20 @@
   (:require
    [clojure.spec.alpha :as s]
    [sodium.utils :as utils]
-   [sodium.keys]
-   #_[soda-ash-macros :refer [semantic-ui-react-tags]]))
+   [sodium.keys :as keys]))
 
 
 ;;; Force early load of key sets. We need them available before the
-;;; defcontrol macro is expanded.
+;;; defcomponent macro is expanded.
 ;;; [TODO] What's the best way to clean up this hack?
-(sodium.keys/key-set :basic)
+(keys/key-set :basic)
 
 
 (defn merge-keys
   "Combined keys with all the elements of the sets of keys in key-sets."
   [keys key-sets]
   (->> (reduce (fn [so-far key]
-                 (into so-far (map #(-> % name symbol) (key-set key))))
+                 (into so-far (map #(-> % name symbol) (keys/key-set key))))
                (set keys) key-sets)
        (into [])
        (sort-by name)
@@ -29,10 +28,10 @@
 ;;; [TODO] It would be nice to make the properties map be optional like it is
 ;;;        when using vanilla soda-ash. But, I don't see how to do that, and
 ;;;        still retain a nice arglist display.
-(defmacro defcontrol
+(defmacro defcomponent
   [name [params-var & other-params]
    {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
-   & control-body]
+   & component-body]
   {:pre [(utils/validate symbol? name)
          (utils/validate symbol? params-var)]}
   (let [all-keys (merge-keys keys key-sets)]
@@ -41,10 +40,10 @@
                              `[(utils/all-keys-valid? (keys ~params-var)
                                                       ~(set (map keyword all-keys)))])
         :post ~post}
-       ~@control-body)))
+       ~@component-body)))
 
-(defmacro def-simple-control [name parent key-sets]
-  `(defcontrol ~name [params# & body#]
+(defmacro def-simple-component [name parent key-sets]
+  `(defcomponent ~name [params# & body#]
      {:sodium.core/key-sets ~key-sets}
      (utils/vconcat [~parent (utils/camelize-map-keys params#)]
                     body#)))

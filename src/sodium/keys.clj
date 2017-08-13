@@ -3,6 +3,15 @@
 
 (ns sodium.keys)
 
+;;; [TODO] Fill in more keys
+;;; For mapping of HTML attributes to elements, see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
+;;; For list of all HTML tags, see http://www.fillster.com/htmlcodes/htmltags.html
+;;;   also, https://developer.mozilla.org/en/docs/Web/HTML/Element
+;;;   and https://www.w3schools.com/TAGs/default.asp
+;;; See also http://learnsemantic.com/
+
+
+
 
 (def ui-key-set-map (atom {}))
 
