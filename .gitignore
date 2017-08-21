@@ -1,10 +1,11 @@
-*~
 *.class
 *.jar
+*~
 /.lein-*
 /.nrepl-port
 /checkouts
 /classes
+/resources/public/js/compiled
 /target
 pom.xml
 pom.xml.asc
