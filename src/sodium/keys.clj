@@ -212,6 +212,31 @@
               ])
 
 
+;;; From https://react.semantic-ui.com/elements/image
+(add-key-set :image
+             [:alt
+              :avatar?
+              :bordered?
+              :centered?
+              :dimmer
+              :disabled?
+              :floated
+              :Fluid
+              :height
+              :href
+              :inline?
+              :label
+              :shape
+              :size
+              :spadced
+              :src
+              :ui?
+              :vertical-align
+              :width
+              :wrapped
+              ])
+
+
 ;;; From https://react.semantic-ui.com/elements/input
 (add-key-set :input
              [:action
@@ -242,6 +267,29 @@
               :placeholder
               ])
 
+
+;;; From https://react.semantic-ui.com/elements/label
+(add-key-set :label
+             [:active?
+              :attached
+              :basic?
+              :circular?
+              :color
+              :content
+              :corner
+              :detail
+              :empty
+              :floating?
+              :horizontal?
+              :icon
+              :image
+              :on-click
+              :on-remove
+              :pointing
+              :remove-icon
+              :ribbon
+              :size
+              :tag?])
 
 ;;; From https://react.semantic-ui.com/collections/menu
 (add-key-set :menu

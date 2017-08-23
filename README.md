@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Sodium is a wrapper around [soda-ash](https://github.com/gadfly361/soda-ash) which, in
-turn is a ClojureScript wrapper
-around [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React). Sodium
+Sodium is a wrapper around [soda-ash](https://github.com/gadfly361/soda-ash) which,
+in turn, is a ClojureScript wrapper around
+[semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React). Sodium
 adds two sets of features into the mix, both aimed at making it easier to include
 Semantic UI in re-frame projects:
 
@@ -61,7 +61,7 @@ If you want to contribute to this project, you will want to test your changes. Y
 extend the (very minimal) tests inside Sodium, but you will probably need to really test
 by using Sodium in a ClojureScript project. The easiest way to do this, while you are
 changing Sodium, is by using Leiningen's
-[checkout directory](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#checkout-dependencies)
+[checkouts directory](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#checkout-dependencies)
 feature by sym-linking directly to your copy of Sodium.
 
 ## Using Sodium

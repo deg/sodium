@@ -1,26 +1,25 @@
-Note: Dummy file, created by Lein. No real content yet.
-
 # Change Log
-All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [Unreleased]
-### Changed
-- Add a new arity to `make-widget-async` to provide a different widget shape.
-
-## [0.1.1] - 2017-08-02
-### Changed
-- Documentation on how to make the widgets.
-
-### Removed
-- `make-widget-sync` - we're all async, all the time.
-
-### Fixed
-- Fixed widget maker to keep working when daylight savings switches over.
-
-## 0.1.0 - 2017-08-02
 ### Added
-- Files from the new template.
-- Widget maker public API - `make-widget-sync`.
+- *Sodium core*. Add image and label.
+- *Sodium extensions*. Components that specialize the core components. So far: 'app-title'.
+- *Chrome utilities*. Browser supprt. So far: 'console-dir'.
 
-[Unreleased]: https://github.com/your-name/sodium/compare/0.1.1...HEAD
-[0.1.1]: https://github.com/your-name/sodium/compare/0.1.0...0.1.1
+## [0.1.0] - 2017-08-13
+### Added
+- Initial project
+- Some Soda-ash components imported: 'checkbox', 'container', 'dropdown', 'form',
+  'form-button', 'form-input', 'form-group', 'grid', 'header', 'input', 'menu',
+  'menu-item', 'rail', and 'text-area'.
+- Helpers for data in/out of components: '>event', '>atom', and '<atom'.
+- Minor helper functions: `<sub`, `>evt`, etc.
+### Changed
+_(nothing)_
+### Removed
+_(nothing)_
+### Fixed
+_(nothing)_
+
+[Unreleased]: https://github.com/deg/sodium/compare/6c372df...HEAD
+[0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df

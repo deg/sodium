@@ -16,13 +16,3 @@
               :dividing? true
               :size :large}))
 
-(defn tabs-row [tabs]
-  (into [na/menu {:tabular? true}]
-        (map (fn [{:keys [id label]}]
-               (let [active? (= id (or (<sub [:page]) :home))
-                     handler #(routes/goto-page id (<sub [:server]))]
-                 [na/menu-item {:name label
-                                :active? active?
-                                :color (if active? "blue" "grey")
-                                :on-click handler}]))
-             tabs)))
