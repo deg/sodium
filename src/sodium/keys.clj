@@ -55,7 +55,7 @@
 ;;; From https://react.semantic-ui.com/elements/container
 (add-key-set :container
              [:fluid?
-              :text
+              :text?
               :text-align])
 
 ;;; From https://react.semantic-ui.com/modules/dropdown
@@ -208,7 +208,7 @@
               :size
               :sub?
               :subheader
-              :textAlign
+              :text-align
               ])
 
 
@@ -295,6 +295,7 @@
 (add-key-set :menu
              [:active-index
               :attached
+              :borderless?
               :color
               :compact?
               :default-active-index

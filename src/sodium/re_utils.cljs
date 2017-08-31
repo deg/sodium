@@ -9,13 +9,17 @@
    [sodium.utils :as utils]))
 
 
-;; Nice sugar from https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions
 
-(def <sub "Shorthand for re-frame subscribe and deref."
-  (comp deref re-frame/subscribe))
+;; Ideas based on https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions
 
 (def >evt "Shorthand for re-frame dispatch to event."
   re-frame/dispatch)
+
+(defn <sub
+  "Shorthand for re-frame subscribe and deref."
+  ([subscription]         (-> subscription re-frame/subscribe deref))
+  ([subscription default] (or (<sub subscription) default)))
+
 
 
 (s/def :re-frame/vec-or-fn (s/or :event-or-sub vector? :function fn?))
