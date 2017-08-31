@@ -19,6 +19,7 @@
   be used when the value is empty, and a 'coercer' function to convert
   the value into a suitable form for the event.
   Note that the default value is _not_ passed through the coercer."
+  ;; [TODO] The line about the default value is obviously wrong. Check users and fix!
   ([event]
    (>event event ""))
   ([event default]
@@ -40,12 +41,14 @@
   be used when the value is empty, and a 'coercer' function to convert
   the value into a suitable form for the event.
   Note that the default value is _not_ passed through the coercer."
+  ;; [TODO] Default wrong here too
   ([atom]
    (>atom atom ""))
   ([atom default]
    (>atom atom default identity))
   ([atom default coercer]
    #(->> (or (.-value %2) (.-checked %2))
+         js->clj
          coercer
          (reset! atom))))
 
@@ -63,8 +66,7 @@
   [items value-fn text-fn]
   (mapv (fn [item]
          (list-option (value-fn item) (text-fn item)))
-       items))
-
+        items))
 
 (defn <atom
   "Get a value from an atom. Suitable to use, e.g., as the :value or
@@ -96,18 +98,30 @@
 (def-simple-component menu       sa/Menu      [:basic :menu])
 (def-simple-component menu-item  sa/MenuItem  [:basic :menu-item])
 (def-simple-component rail       sa/Rail      [:basic :rail])
+(def-simple-component search     sa/Search    [:basic :search])
 (def-simple-component text-area  sa/TextArea  [:basic :form-field :input :input-html :text-area])
 
 ;;; This is (at least for now) how we define components that don't fit
 ;;; into the def-simple-component cookie-cutter regime.
 ;;; Actually, all that's really non-standard here is the supplying
 ;;; of "button" as the default type.
+;;; [TODO] Explain data-tooltip too
+;;; [TODO] Combine form-button and button code
 (defcomponent form-button [params]
   {::key-sets [:basic :form-field :button]
    ::keys [data-tooltip]
    :pre [(utils/validate (s/nilable ifn?) on-click)
          (utils/validate (s/nilable string?) data-tooltip)]}
   [sa/FormButton (-> params
-                     (assoc :type (or type "button"))
+                     (update :type #(or % "button"))
                      (utils/camelize-map-keys :exclude [:data-tooltip]))])
+
+(defcomponent button [params]
+  {::key-sets [:basic :button]
+   ::keys [data-tooltip]
+   :pre [(utils/validate (s/nilable ifn?) on-click)
+         (utils/validate (s/nilable string?) data-tooltip)]}
+  [sa/Button (-> params
+                 (update :type #(or % "button"))
+                 (utils/camelize-map-keys :exclude [:data-tooltip]))])
 

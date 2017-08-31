@@ -343,6 +343,34 @@
               :size])
 
 
+;;; From https://react.semantic-ui.com/modules/search
+(add-key-set :search
+             [:aligned
+              :category?
+              :category-renderer
+              :default-open?
+              :default-value
+              :fluid?
+              :icon
+              :input
+              :loading?
+              :min-characters
+              :no-results-description
+              :no-results-message
+              :on-blur
+              :on-focus
+              :on-mouse-down
+              :on-results-select
+              :on-search-change
+              :on-selection-change
+              :open?
+              :result-renderer
+              :results
+              :select-first-result?
+              :show-no-results?
+              :size
+              :value])
+
 ;;; From https://react.semantic-ui.com/addons/text-area
 (add-key-set :text-area
              [:auto-height
