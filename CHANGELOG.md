@@ -2,9 +2,10 @@
 
 ## [Unreleased]
 ### Changed
+- `<sub` now takes optional `default` parameter
 - Now using Soda-ash 0.4.0 (and Semantic UI 2.2.12; update your CSS)
 - Now using re-frame 0.10.1
-- `<sub` now takes optional `default` parameter
+- Now using ClojureScript 1.9.908
 ### Added
 - *Sodium core*. Add image, label, search, and button.
 - *Sodium extensions*. Components that specialize the core components. So far:
