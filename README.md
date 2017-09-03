@@ -46,10 +46,10 @@ a couple of steps:
 
 - Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.1.0"]`
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
-  "0.3.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
+  "0.4.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
   any recent changes).
 - You will also need to include the Semantic UI stylesheet in your _index.html_:
- `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">`
+ `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css">`
 - Finally, you will need to require Sodium, and maybe also Soda-ash, in your namespace:
   - `[sodium.core :as na]` - Most of Sodium's functionality
   - `[sodium.utils :refer [<sub >evt]]` - Useful utilities

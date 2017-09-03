@@ -6,9 +6,9 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.671"]
-                 [re-frame "0.9.4"]
+                 [re-frame "0.10.1"]
                  [reagent "0.7.0"]
-                 [soda-ash "0.3.0"]]
+                 [soda-ash "0.4.0"]]
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.7"]]
   :cljsbuild

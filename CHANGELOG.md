@@ -1,10 +1,16 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Now using Soda-ash 0.4.0 (and Semantic UI 2.2.12; update your CSS)
+- Now using re-frame 0.10.1
+- `<sub` now takes optional `default` parameter
 ### Added
-- *Sodium core*. Add image and label.
-- *Sodium extensions*. Components that specialize the core components. So far: 'app-title'.
-- *Chrome utilities*. Browser supprt. So far: 'console-dir'.
+- *Sodium core*. Add image, label, search, and button.
+- *Sodium extensions*. Components that specialize the core components. So far:
+   app-title, and labelled-field.
+- *re-frame utilities*. Added `vec->fn` and `event->fn`.
+- *Chrome utilities*. Browser support. So far: 'console-dir'.
 
 ## [0.1.0] - 2017-08-13
 ### Added
