@@ -7,9 +7,12 @@
 - Now using re-frame 0.10.1
 - Now using ClojureScript 1.9.908
 ### Added
-- *Sodium core*. Add button, grid-column, grid-row image, label, list-na, list-item, and search.
+- *Sodium core*.
+-- Added components: button, grid-column, grid-row image, label, list-na, list-item, and search.
+-- Add spec def: sodium/size
 - *Sodium extensions*. Components that specialize the core components. So far:
-   app-title, and labelled-field.
+   app-header, panel-header panel-subheader, section-header, section-subheader,
+   and labelled-field.
 - *re-frame utilities*. Added `vec->fn` and `event->fn`.
 - *Chrome utilities*. Browser support. So far: 'console-dir'.
 

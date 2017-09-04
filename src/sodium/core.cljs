@@ -10,6 +10,8 @@
    [sodium.re-utils :refer [<sub >evt]]
    [sodium.utils :as utils]))
 
+(s/def :sodium/size #{:tiny :small :medium :large :huge})
+
 (defn >event
   "Return a function suitable for an on-* handler, to deliver the value
   into into a re-frame event. See also >atom.
