@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.2.0] - 2017-09-04
 ### Changed
 - `<sub` now takes optional `default` parameter and warns better
 - Now using Soda-ash 0.4.0 (and Semantic UI 2.2.12; update your CSS)
@@ -8,8 +10,8 @@
 - Now using ClojureScript 1.9.908
 ### Added
 - *Sodium core*.
--- Added components: button, grid-column, grid-row image, label, list-na, list-item, and search.
--- Add spec def: sodium/size
+  - Added components: button, grid-column, grid-row image, label, list-na, list-item, and search.
+  - Add spec def: sodium/size
 - *Sodium extensions*. Components that specialize the core components. So far:
    app-header, panel-header panel-subheader, section-header, section-subheader,
    and labelled-field.
@@ -24,12 +26,11 @@
   'menu-item', 'rail', and 'text-area'.
 - Helpers for data in/out of components: '>event', '>atom', and '<atom'.
 - Minor helper functions: `<sub`, `>evt`, etc.
-### Changed
-_(nothing)_
 ### Removed
 _(nothing)_
 ### Fixed
 _(nothing)_
 
-[Unreleased]: https://github.com/deg/sodium/compare/6c372df...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/6913e26...HEAD
+[0.2.0]: https://github.com/deg/sodium/compare/6c372df...6913e26
 [0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df
