@@ -17,8 +17,12 @@
 
 (defn <sub
   "Shorthand for re-frame subscribe and deref."
-  ([subscription]         (-> subscription re-frame/subscribe deref))
-  ([subscription default] (or (<sub subscription) default)))
+  ([subscription]
+   {:pre [(utils/validate vector? subscription)]}
+   (-> subscription re-frame/subscribe deref))
+  ([subscription default]
+   {:pre [(utils/validate vector? subscription)]}
+   (or (<sub subscription) default)))
 
 
 
@@ -45,5 +49,6 @@
   [event-or-fn]
   (vec->fn event-or-fn >evt))
 
-(defn sub->fn   [sub-or-fn]   (vec->fn sub-or-fn   <sub))
+(defn sub->fn [sub-or-fn]
+  (vec->fn sub-or-fn <sub))
 

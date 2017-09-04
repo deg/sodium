@@ -118,10 +118,12 @@
 ;;; From https://react.semantic-ui.com/collections/grid
 (add-key-set :grid
              [:celled
+              :celled?
               :centered?
               :columns
               :container?
               :divided
+              :divided?
               :doubling?
               :inverted?
               :padded
@@ -131,6 +133,34 @@
               :stretched?
               :text-align
               :vertical-align])
+
+;;; From https://react.semantic-ui.com/collections/grid (tab: Grid.Column)
+(add-key-set :grid-column
+             [:color
+              :computer
+              :floated
+              :large-screen
+              :mobile
+              :only
+              :stretched?
+              :tablet
+              :text-align
+              :vertical-align
+              :wide-screen
+              :width])
+
+;;; From https://react.semantic-ui.com/collections/grid (tab: Grid.Row)
+(add-key-set :grid-row
+             [:centered?
+              :color
+              :columns
+              :divided?
+              :only
+              :reversed
+              :stretched?
+              :text-align
+              :vertical-align])
+
 
 ;;; From https://react.semantic-ui.com/collections/form
 (add-key-set :form
@@ -290,6 +320,36 @@
               :ribbon
               :size
               :tag?])
+
+;;; From https://react.semantic-ui.com/elements/list
+(add-key-set :list
+             [:animated?
+              :bulleted?
+              :celled?
+              :divided?
+              :floated
+              :horizontal?
+              :inverted?
+              :items
+              :link?
+              :on-item-click
+              :ordered?
+              :relaxed
+              :selection?
+              :size
+              :vertical-align])
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Item)
+(add-key-set :list-item
+             [:active?
+              :content
+              :description
+              :disabled?
+              :header
+              :icon
+              :image
+              :on-click
+              :value])
 
 ;;; From https://react.semantic-ui.com/collections/menu
 (add-key-set :menu
