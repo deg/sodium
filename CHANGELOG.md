@@ -31,6 +31,6 @@ _(nothing)_
 ### Fixed
 _(nothing)_
 
-[Unreleased]: https://github.com/deg/sodium/compare/6913e26...HEAD
-[0.2.0]: https://github.com/deg/sodium/compare/6c372df...6913e26
+[Unreleased]: https://github.com/deg/sodium/compare/043f00a...HEAD
+[0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a
 [0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df
