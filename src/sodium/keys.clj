@@ -30,6 +30,34 @@
               ])
 
 
+;;; From https://react.semantic-ui.com/elements/button
+(add-key-set :button
+             [:active?        ;; bool
+              :animated       ;; bool|enum
+              :attached       ;; enum: [left, right, top, bottom]
+              :basic?         ;; bool
+              :circular?      ;; bool
+              :color          ;; enum: [red orange yellow olive green teal blue violet purple pink brown grey black facebook google plus instagram linkedin twitter vk youtube]
+              :compact?       ;; bool
+              :content        ;; custom
+              :floated        ;; enum: [left right]
+              :fluid?         ;; bool
+              :icon           ;; custom
+              :inverted?      ;; bool
+              :label          ;; custom
+              :label-position ;; enum [right left]
+              :loading?       ;; bool
+              :negative?      ;; bool
+              :on-click       ;; func
+              :positive?      ;; bool
+              :primary?       ;; bool
+              :secondary?     ;; bool
+              :size           ;; enum: [mini tiny small medium large big huge massive]
+              :tab-index      ;; number|string
+              :toggle?        ;; bool
+              ])
+
+
 ;;; From https://react.semantic-ui.com/modules/checkbox
 (add-key-set :checkbox
              [:checked?
@@ -115,6 +143,40 @@
               ])
 
 
+;;; From https://react.semantic-ui.com/collections/form
+(add-key-set :form
+             [:action
+              :error?
+              :inverted?
+              :loading?
+              :on-submit
+              :reply?
+              :size
+              :success?
+              :warning?
+              :widths
+              ])
+
+
+;;; From https://react.semantic-ui.com/collections/form (tab: Form.Field)
+(add-key-set :form-field
+             [:control        ;; custom (mutually exclusive with :children)
+              :disabled?      ;; bool
+              :error?         ;; bool
+              :inline?        ;; bool
+              :label          ;; node|object (mutually exclusive with :children)
+              :required?      ;; bool
+              :type           ;; custom
+              :width          ;; enum: [1,,, 16, one,,, sixteen]
+              ])
+
+;;; From https://react.semantic-ui.com/collections/form
+(add-key-set :form-group
+             [:grouped
+              :inline
+              :widths])
+
+
 ;;; From https://react.semantic-ui.com/collections/grid
 (add-key-set :grid
              [:celled
@@ -160,68 +222,6 @@
               :stretched?
               :text-align
               :vertical-align])
-
-
-;;; From https://react.semantic-ui.com/collections/form
-(add-key-set :form
-             [:action
-              :error?
-              :inverted?
-              :loading?
-              :on-submit
-              :reply?
-              :size
-              :success?
-              :warning?
-              :widths
-              ])
-
-
-;;; From https://react.semantic-ui.com/collections/form (tab: Form.Field)
-(add-key-set :form-field
-             [:control        ;; custom (mutually exclusive with :children)
-              :disabled?      ;; bool
-              :error?         ;; bool
-              :inline?        ;; bool
-              :label          ;; node|object (mutually exclusive with :children)
-              :required?      ;; bool
-              :type           ;; custom
-              :width          ;; enum: [1,,, 16, one,,, sixteen]
-              ])
-
-;;; From https://react.semantic-ui.com/collections/form
-(add-key-set :form-group
-             [:grouped
-              :inline
-              :widths])
-
-
-;;; From https://react.semantic-ui.com/elements/button
-(add-key-set :button
-             [:active?        ;; bool
-              :animated       ;; bool|enum
-              :attached       ;; enum: [left, right, top, bottom]
-              :basic?         ;; bool
-              :circular?      ;; bool
-              :color          ;; enum: [red orange yellow olive green teal blue violet purple pink brown grey black facebook google plus instagram linkedin twitter vk youtube]
-              :compact?       ;; bool
-              :content        ;; custom
-              :floated        ;; enum: [left right]
-              :fluid?         ;; bool
-              :icon           ;; custom
-              :inverted?      ;; bool
-              :label          ;; custom
-              :label-position ;; enum [right left]
-              :loading?       ;; bool
-              :negative?      ;; bool
-              :on-click       ;; func
-              :positive?      ;; bool
-              :primary?       ;; bool
-              :secondary?     ;; bool
-              :size           ;; enum: [mini tiny small medium large big huge massive]
-              :tab-index      ;; number|string
-              :toggle?        ;; bool
-              ])
 
 
 ;;; From https://react.semantic-ui.com/elements/header
@@ -393,6 +393,52 @@
               :on-click
               :position
               ])
+
+;;; From https://react.semantic-ui.com/modules/modal
+(add-key-set :modal
+             [:actions
+              :basic?
+              :close-icon
+              :close-on-dimmer-click?
+              :colse-on-document-click?
+              :content
+              :default-open?
+              :dimmer
+              :event-pool
+              :header
+              :mount-node
+              :on-action-click
+              :on-close
+              :on-mount
+              :on-open
+              :on-unmount
+              :open?
+              :size
+              :style
+              ])
+
+;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Header)
+(add-key-set :modal-header
+             [:content
+              ])
+
+;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Content)
+(add-key-set :modal-content
+             [:content
+              :image?
+              :scrolling?
+              ])
+
+;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Description)
+(add-key-set :modal-description
+             [
+              ])
+
+;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Actions)
+(add-key-set :modal-actions
+             [:actions
+              :on-action-click])
+
 
 ;;; From https://react.semantic-ui.com/elements/rail
 (add-key-set :rail

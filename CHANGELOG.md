@@ -1,6 +1,16 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+_(nothing)_
+### Added
+- *Sodium core*
+  - Added components modal, modal-header, modal-content, modal-description, modal-actions
+### Removed
+_(nothing)_
+### Fixed
+_(nothing)_
+
 
 ## [0.2.0] - 2017-09-04
 ### Changed
@@ -18,6 +28,7 @@
 - *re-frame utilities*. Added `vec->fn` and `event->fn`.
 - *Chrome utilities*. Browser support. So far: 'console-dir'.
 
+
 ## [0.1.0] - 2017-08-13
 ### Added
 - Initial project
@@ -26,10 +37,7 @@
   'menu-item', 'rail', and 'text-area'.
 - Helpers for data in/out of components: '>event', '>atom', and '<atom'.
 - Minor helper functions: `<sub`, `>evt`, etc.
-### Removed
-_(nothing)_
-### Fixed
-_(nothing)_
+
 
 [Unreleased]: https://github.com/deg/sodium/compare/043f00a...HEAD
 [0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a
