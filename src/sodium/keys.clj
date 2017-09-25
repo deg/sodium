@@ -400,7 +400,7 @@
               :basic?
               :close-icon
               :close-on-dimmer-click?
-              :colse-on-document-click?
+              :close-on-document-click?
               :content
               :default-open?
               :dimmer
