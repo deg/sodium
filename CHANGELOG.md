@@ -4,12 +4,15 @@
 ### Changed
 _(nothing)_
 ### Added
-- *Sodium core*
-  - Added components modal, modal-header, modal-content, modal-description, modal-actions
+_(nothing)_
 ### Removed
 _(nothing)_
 ### Fixed
 _(nothing)_
+
+## [0.3.0] - 2017-09-26
+### Added
+- Added components modal, modal-header, modal-content, modal-description, modal-actions
 
 
 ## [0.2.0] - 2017-09-04
@@ -40,5 +43,6 @@ _(nothing)_
 
 
 [Unreleased]: https://github.com/deg/sodium/compare/043f00a...HEAD
+[0.3.0]: https://github.com/deg/sodium/compare/043f00a...HEAD
 [0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a
 [0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df

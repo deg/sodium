@@ -44,7 +44,7 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:
 
-- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.2.0"]`
+- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.3.0"]`
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
   "0.4.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
   any recent changes).
