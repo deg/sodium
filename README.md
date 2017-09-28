@@ -73,8 +73,8 @@ UI from your re-frame projects. You can use it in several ways:
 
 Sodium offers the following:
 
-- `na/>event` and `na/>atom` - Create `:on-*` handlers to pass a value
-to a re-frame event or react atom.
+- `na/>event`, `na/>events` and `na/>atom` - Create `:on-*` handlers to
+  pass a value to a re-frame event or react atom.
 - `sodium.core/<atom` - Get a value from a react atom.
 
 #### Typical usage
@@ -130,15 +130,24 @@ I am trying, slowly, to create a set of components that meet my needs yet are ge
 purpose. Most of them are still in my other projects, mostly not public, that use
 Sodium. But, I intend to migrate them into Sodium as I gain comfort.
 
-One component is already here:
+A few of these are already in Sodium. Most are in the sodium.extensions package (usually
+required as `nax`'). But, `form-button` and `button` are in sodium.core. This is for
+historical reasons and will probably change soon:
 
-- `form-button` - HTML forms are, by default, very tied to the old-school HTML notions
-  of page submission. This does not play well with the re-frame philosophy that a form
-  handler should simply trigger a re-frame event. When I naively use the Soda-ash
-  sa/FormButton component at first, I was hit with unexpected extra connections to my
-  server, trying to submit the form. The fix for this, once I realized the problem, was
-  simple: the component needs to explicitly speicify a type of "button." The
-  `na/form-button` component handles this automatically.
+- `na\form-button` and `na\button` - HTML forms are, by default, very tied to the
+  old-school HTML notions of page submission. This does not play well with the
+  re-frame philosophy that a form handler should simply trigger a re-frame event.
+  When I naively use the Soda-ash sa/FormButton component at first, I was hit with
+  unexpected extra connections to my server, trying to submit the form. The fix for
+  this, once I realized the problem, was simple: the component needs to explicitly
+  speicify a type of "button." The `na/form-button` component handles this
+  automatically.
+- `nax\app-header` - Large header.
+- `nax\panel-header` - Medium header.
+- `nax\panel-subheader` - Small header.
+- `nax\section-header` - Medium de-emphasized header.
+- `nax\subsection-header` - Small de-emphasized header.
+- `nax\labelled-field` - Form field with label and arbitrary content.
 
 ### Type-checked wrappers
 
@@ -147,19 +156,31 @@ This is the most experimental part of Sodium and, sadly, still mostly incomplete
 So far, it includes the following components, each a very thin wrapper around the
 corresponding Soda-ash / Semantic UI one:
 
-- `na/checkbox`:   `sa/Checkbox`
-- `na/container`:  `sa/Container`
-- `na/dropdown`:   `sa/Dropdown`
-- `na/form`:        `sa/Form`
+- `na/checkbox`: `sa/Checkbox`
+- `na/container`: `sa/Container`
+- `na/dropdown`: `sa/Dropdown`
+- `na/form`:  `sa/Form`
 - `na/form-input`: `sa/FormInput`
 - `na/form-group`: `sa/FormGroup`
-- `na/grid`:        `sa/Grid`
-- `na/header`:      `sa/Header`
-- `na/input`:       `sa/Input`
-- `na/menu`:        `sa/Menu`
-- `na/menu-item`:  `sa/MenuItem`
-- `na/rail`:        `sa/Rail`
-- `na/text-area`:  `sa/TextArea`
+- `na/grid`:  `sa/Grid`
+- `na/grid-column`: `sa/GridColumn`
+- `na/grid-row`: `sa/GridRow`
+- `na/header`: `sa/Header`
+- `na/image`:  `sa/Image`
+- `na/input`:  `sa/Input`
+- `na/label`:  `sa/Label`
+- `na/list-na`:  `sa/ListSA`
+- `na/list-item`: `sa/ListItem`
+- `na/menu`:  `sa/Menu`
+- `na/menu-item`: `sa/MenuItem`
+- `na/modal`:   `sa/Modal`
+- `na/modal-header`: `sa/ModalHeader`
+- `na/modal-content`:  `sa/ModalContent`
+- `na/modal-description`: `sa/ModalDescription`
+- `na/modal-actions`:  `sa/ModalActions`
+- `na/rail`:  `sa/Rail`
+- `na/search`:  `sa/Search`
+- `na/text-area`: `sa/TextArea`
 
 
 These wrappers improve the components in two ways (both admittedly arguable):

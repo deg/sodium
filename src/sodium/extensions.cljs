@@ -21,27 +21,27 @@
               :sub? sub?}))
 
 (defn app-header
-  "Large header. Title can be either a string or an event vector"
+  "Large header. Title can be either a string or a subscription vector"
   [title]
   (header-maker title :large true false))
 
 (defn panel-header
-  "Medium header. Title can be either a string or an event vector"
+  "Medium header. Title can be either a string or a subscription vector"
   [title]
   (header-maker title :medium false false))
 
 (defn panel-subheader
-  "Small header. Title can be either a string or an event vector"
+  "Small header. Title can be either a string or a subscription vector"
   [title]
   (header-maker title :small false false))
 
 (defn section-header
-  "Medium de-emphasized header. Title can be either a string or an event vector"
+  "Medium de-emphasized header. Title can be either a string or a subscription vector"
   [title]
   (header-maker title :medium false true))
 
 (defn subsection-header
-  "Small de-emphasized header. Title can be either a string or an event vector"
+  "Small de-emphasized header. Title can be either a string or a subscription vector"
   [title]
   (header-maker title :small false true))
 
