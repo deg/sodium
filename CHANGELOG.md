@@ -11,14 +11,10 @@ _(nothing)_
 _(nothing)_
 
 ## [0.4.0] - 2017-09-28
-### Changed
-_(nothing)_
 ### Added
 - Some doc/readme improvements
-- :style accepted in components
-- >events for multiple dispatch for on-* handlers
-### Removed
-_(nothing)_
+- `:style` accepted in components
+- `>events` for multiple dispatch for on-* handlers
 ### Fixed
 - Fixed build problem; added missing dependency
 
@@ -54,8 +50,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
-[0.4.0]: https://github.com/deg/sodium/compare/17de322...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/0dd1e35...HEAD
+[0.4.0]: https://github.com/deg/sodium/compare/17de322...0dd1e35
 [0.3.0]: https://github.com/deg/sodium/compare/043f00a...17de322
 [0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a
 [0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df
