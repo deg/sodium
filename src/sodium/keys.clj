@@ -27,6 +27,8 @@
              [:as             ;; custom
               :children       ;; node
               :class-name     ;; string
+
+              :style          ;; *** NOT LISTED IN DOC!
               ])
 
 
