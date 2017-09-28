@@ -33,6 +33,22 @@
                              default
                              value)))))))
 
+(defn >events
+  "Utility function to dispatch multiple events from an on-* hander.
+  The syntax is a bit opaque, because we have to wrap both the event
+  parameters and the parameters to >event (default and coercer).
+
+  So, a usage looks like:
+
+    (na/>events [[[:update-age :in-minutes] 42]
+                 [[:set-color] :cyan nearest-color]])
+  "
+  [events]
+  (fn [dom-event param-map]
+    (run! (fn [event]
+            ((apply >event event) dom-event param-map))
+          events)))
+
 (defn >atom
   "Return a function suitable for an on-* handler, to deliver the value
   into into an atom. This would typically be used to store a result into
