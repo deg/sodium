@@ -28,9 +28,16 @@
               :children       ;; node
               :class-name     ;; string
 
-              :style          ;; *** NOT LISTED IN DOC!
+              ;; *** NOT LISTED IN DOC!
+              :key
+              :style
               ])
 
+;;; From https://react.semantic-ui.com/views/advertisement
+(add-key-set :advertisement
+             [:centered?
+              :test
+              :unit])
 
 ;;; From https://react.semantic-ui.com/elements/button
 (add-key-set :button
@@ -87,6 +94,16 @@
              [:fluid?
               :text?
               :text-align])
+
+;;; From https://react.semantic-ui.com/elements/divider
+(add-key-set :divider
+             [:clearing?
+              :fitted?
+              :hidden?
+              :horizontal?
+              :inverted?
+              :section?
+              :vertical?])
 
 ;;; From https://react.semantic-ui.com/modules/dropdown
 (add-key-set :dropdown
@@ -244,6 +261,28 @@
               ])
 
 
+;;; From https://react.semantic-ui.com/elements/icon
+(add-key-set :icon
+             [:bordered?
+              :circular?
+              :color
+              :corner?
+              :disabled?
+              :fitted?
+              :flipped
+              :inverted?
+              :link?
+              :loading?
+              :name
+              :rotated
+              :size
+              ])
+
+;;; From https://react.semantic-ui.com/elements/icon (tab: Icon.Group)
+(add-key-set :icon-group
+             [:size
+              ])
+
 ;;; From https://react.semantic-ui.com/elements/image
 (add-key-set :image
              [:alt
@@ -380,6 +419,11 @@
               ])
 
 
+;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Header)
+(add-key-set :menu-header
+             [:content
+              ])
+
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Item)
 (add-key-set :menu-item
              [:active?
@@ -394,6 +438,11 @@
               :name
               :on-click
               :position
+              ])
+
+;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Menu)
+(add-key-set :menu-menu
+             [:position
               ])
 
 ;;; From https://react.semantic-ui.com/modules/modal
@@ -479,6 +528,38 @@
               :show-no-results?
               :size
               :value])
+
+;;; From https://react.semantic-ui.com/elements/segment
+(add-key-set :segment
+             [:attached
+              :basic?
+              :circular?
+              :clearing?
+              :color
+              :compact?
+              :disabled?
+              :floated
+              :inverted?
+              :loading?
+              :padded
+              :piled?
+              :raised?
+              :secondary?
+              :size
+              :stacked?
+              :tertiary?
+              :text-align
+              :vertical?
+              ])
+
+;;; From https://react.semantic-ui.com/elements/segment (tab: Segment.Group)
+(add-key-set :segment-group
+             [:compact?
+              :horizontal?
+              :piled?
+              :raised?
+              :size
+              :stacked?])
 
 ;;; From https://react.semantic-ui.com/addons/text-area
 (add-key-set :text-area

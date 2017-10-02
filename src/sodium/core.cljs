@@ -102,9 +102,11 @@
 ;;; Components that we supply so far. More coming soon.
 ;;; The final argument here is the descriptor groups of the acceptable parameters.
 ;;; For more details about this, see keys.clj and macros.clj
+(def-simple-component advertisement     sa/Advertisement    [:basic :advertisement])
 (def-simple-component checkbox          sa/Checkbox         [:basic :checkbox])
 (def-simple-component container         sa/Container        [:basic :container])
 (def-simple-component dropdown          sa/Dropdown         [:basic :dropdown])
+(def-simple-component divider           sa/Divider          [:basic :divider])
 (def-simple-component form              sa/Form             [:basic :form])
 (def-simple-component form-input        sa/FormInput        [:basic :form-field :input :input-html])
 (def-simple-component form-group        sa/FormGroup        [:basic :form-group])
@@ -113,12 +115,16 @@
 (def-simple-component grid-row          sa/GridRow          [:basic :grid-row])
 (def-simple-component header            sa/Header           [:basic :header])
 (def-simple-component image             sa/Image            [:basic :image])
+(def-simple-component icon              sa/Icon             [:basic :icon])
+(def-simple-component icon-group        sa/IconGroup        [:basic :icon-group])
 (def-simple-component input             sa/Input            [:basic :form-field :input :input-html])
 (def-simple-component label             sa/Label            [:basic :label])
 (def-simple-component list-na           sa/ListSA           [:basic :list]) ;; (Renamed, to avoid clash with clojure.core/list)
 (def-simple-component list-item         sa/ListItem         [:basic :list-item])
 (def-simple-component menu              sa/Menu             [:basic :menu])
+(def-simple-component menu-header       sa/MenuHeader       [:basic :menu-header])
 (def-simple-component menu-item         sa/MenuItem         [:basic :menu-item])
+(def-simple-component menu-menu         sa/MenuMenu         [:basic :menu-menu])
 (def-simple-component modal             sa/Modal            [:basic :modal])
 (def-simple-component modal-header      sa/ModalHeader      [:basic :modal-header])
 (def-simple-component modal-content     sa/ModalContent     [:basic :modal-content])
@@ -126,6 +132,8 @@
 (def-simple-component modal-actions     sa/ModalActions     [:basic :modal-actions])
 (def-simple-component rail              sa/Rail             [:basic :rail])
 (def-simple-component search            sa/Search           [:basic :search])
+(def-simple-component segment           sa/Segment          [:basic :segment])
+(def-simple-component segment-group     sa/SegmentGroup     [:basic :segment-group])
 (def-simple-component text-area         sa/TextArea         [:basic :form-field :input :input-html :text-area])
 
 ;;; This is (at least for now) how we define components that don't fit

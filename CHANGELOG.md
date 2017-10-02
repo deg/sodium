@@ -10,6 +10,10 @@ _(nothing)_
 ### Fixed
 _(nothing)_
 
+## [0.5.0]- 2017-10-02
+### Added
+- Added components advertisement, divider, icon, icon-group, menu-header, menu-menu, segment, segment-group
+
 ## [0.4.0] - 2017-09-28
 ### Added
 - Some doc/readme improvements
@@ -50,7 +54,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/0dd1e35...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
+[0.4.0]: https://github.com/deg/sodium/compare/0dd1e35...HEAD
 [0.4.0]: https://github.com/deg/sodium/compare/17de322...0dd1e35
 [0.3.0]: https://github.com/deg/sodium/compare/043f00a...17de322
 [0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a

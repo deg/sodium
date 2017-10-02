@@ -44,7 +44,7 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:
 
-- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.3.0"]`
+- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.5.0"]`
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
   "0.4.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
   any recent changes).
@@ -156,8 +156,10 @@ This is the most experimental part of Sodium and, sadly, still mostly incomplete
 So far, it includes the following components, each a very thin wrapper around the
 corresponding Soda-ash / Semantic UI one:
 
+- `na/advertisement`: `sa/Advertisement`
 - `na/checkbox`: `sa/Checkbox`
 - `na/container`: `sa/Container`
+- `na/divider`: `sa/Divider`
 - `na/dropdown`: `sa/Dropdown`
 - `na/form`:  `sa/Form`
 - `na/form-input`: `sa/FormInput`
@@ -166,13 +168,17 @@ corresponding Soda-ash / Semantic UI one:
 - `na/grid-column`: `sa/GridColumn`
 - `na/grid-row`: `sa/GridRow`
 - `na/header`: `sa/Header`
+- `na/icon`:  `sa/Icon`
+- `na/icon-group`:  `sa/IconGroup`
 - `na/image`:  `sa/Image`
 - `na/input`:  `sa/Input`
 - `na/label`:  `sa/Label`
 - `na/list-na`:  `sa/ListSA`
 - `na/list-item`: `sa/ListItem`
 - `na/menu`:  `sa/Menu`
+- `na/menu-header`: `sa/MenuHeader`
 - `na/menu-item`: `sa/MenuItem`
+- `na/menu-menu`: `sa/MenuMenu`
 - `na/modal`:   `sa/Modal`
 - `na/modal-header`: `sa/ModalHeader`
 - `na/modal-content`:  `sa/ModalContent`
@@ -180,6 +186,8 @@ corresponding Soda-ash / Semantic UI one:
 - `na/modal-actions`:  `sa/ModalActions`
 - `na/rail`:  `sa/Rail`
 - `na/search`:  `sa/Search`
+- `na/segment`:  `sa/Segment`
+- `na/segment-group`:  `sa/SegmentGroup`
 - `na/text-area`: `sa/TextArea`
 
 
