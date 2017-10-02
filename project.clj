@@ -1,5 +1,5 @@
 (defproject
-  com.degel/sodium "0.5.0"
+  com.degel/sodium "0.6.0-SNAPSHOT"
   :description "A wrapper around soda-ash and semantic-ui-react"
   :url "https://github.com/deg/sodium"
   :license {:name "Eclipse Public License"
