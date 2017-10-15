@@ -1,11 +1,11 @@
 (defproject
-  com.degel/sodium "0.7.0-SNAPSHOT"
+  com.degel/sodium "0.6.1"
   :description "A wrapper around soda-ash and semantic-ui-react"
   :url "https://github.com/deg/sodium"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
-                 [org.clojure/clojurescript "1.9.908"]
+  :dependencies [[org.clojure/clojure "1.9.0-beta2"]
+                 [org.clojure/clojurescript "1.9.946"]
                  [re-frame "0.10.2"]
                  [reagent "0.7.0"]
                  [soda-ash "0.4.0"]]
