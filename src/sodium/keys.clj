@@ -31,6 +31,7 @@
               ;; *** NOT LISTED IN DOC!
               :key
               :style
+              :on-click
               ])
 
 ;;; From https://react.semantic-ui.com/views/advertisement
@@ -57,7 +58,6 @@
               :label-position ;; enum [right left]
               :loading?       ;; bool
               :negative?      ;; bool
-              :on-click       ;; func
               :positive?      ;; bool
               :primary?       ;; bool
               :secondary?     ;; bool
@@ -78,7 +78,6 @@
               :label
               :name
               :on-change
-              :on-click
               :on-mouse-down
               :radio
               :read-only?
@@ -134,7 +133,6 @@
               :on-add-item
               :on-blur
               :on-change
-              :on-click
               :on-close
               :on-focus
               :on-label-click
@@ -354,7 +352,6 @@
               :horizontal?
               :icon
               :image
-              :on-click
               :on-remove
               :pointing
               :remove-icon
@@ -389,7 +386,6 @@
               :header
               :icon
               :image
-              :on-click
               :value])
 
 ;;; From https://react.semantic-ui.com/collections/menu
@@ -436,7 +432,6 @@
               :index
               :link?
               :name
-              :on-click
               :position
               ])
 

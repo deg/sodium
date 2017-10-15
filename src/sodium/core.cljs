@@ -6,11 +6,16 @@
    [sodium.macros :refer [defcomponent def-simple-component]])
   (:require
    [clojure.spec.alpha :as s]
+   [re-frame.loggers :refer [console]]
    [soda-ash.core :as sa]
    [sodium.re-utils :refer [<sub >evt]]
    [sodium.utils :as utils]))
 
 (s/def :sodium/size #{:tiny :small :medium :large :huge})
+
+(defn- negligible?
+  [x]
+  (if (seqable? x) (empty? x) (not x)))
 
 (defn >event
   "Return a function suitable for an on-* handler, to deliver the value
@@ -29,7 +34,7 @@
   ([event default coercer]
    #(>evt (let [value (or (.-value %2) (.-checked %2))]
             (conj event
-                  (coercer (if (empty? value)
+                  (coercer (if (negligible? value)
                              default
                              value)))))))
 

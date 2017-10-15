@@ -10,6 +10,14 @@ _(nothing)_
 ### Fixed
 _(nothing)_
 
+## [0.6.0]
+### Changed
+- Updated dependencies: re-frame, lein-doo
+### Added
+- Support :on-click in all components
+### Fixed
+- Correctly handle true value from dom
+
 ## [0.5.0]- 2017-10-02
 ### Added
 - Added components advertisement, divider, icon, icon-group, menu-header, menu-menu, segment, segment-group
@@ -54,7 +62,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/a1dd09e...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
+[0.6.0]: https://github.com/deg/sodium/compare/a1dd09e...HEAD
 [0.5.0]: https://github.com/deg/sodium/compare/0dd1e35...a1dd09e
 [0.4.0]: https://github.com/deg/sodium/compare/17de322...0dd1e35
 [0.3.0]: https://github.com/deg/sodium/compare/043f00a...17de322
