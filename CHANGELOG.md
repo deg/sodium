@@ -66,8 +66,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
-[0.6.1]: https://github.com/deg/sodium/compare/bb64849...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/5ecf157...HEAD
+[0.6.1]: https://github.com/deg/sodium/compare/bb64849...5ecf157
 [0.6.0]: https://github.com/deg/sodium/compare/a1dd09e...bb64849
 [0.5.0]: https://github.com/deg/sodium/compare/0dd1e35...a1dd09e
 [0.4.0]: https://github.com/deg/sodium/compare/17de322...0dd1e35
