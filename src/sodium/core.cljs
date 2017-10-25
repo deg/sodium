@@ -58,8 +58,7 @@
   "Return a function suitable for an on-* handler, to deliver the value
   into into an atom. This would typically be used to store a result into
   a local reagent atom. See also >event.
-  The first argument is a re-frame event vector, into which the value
-  will be conjed as the final element.
+  The first argument is an atom, which the value will be reset! into.
   It is followed by two optional arguments: a default value that will
   be used when the value is empty, and a 'coercer' function to convert
   the value into a suitable form for the event.

@@ -4,7 +4,7 @@
 ### Changed
 _(nothing)_
 ### Added
-_(nothing)_
+- Add utils/ci-compare, utils/ci-sort and utils/ci-include?
 ### Removed
 _(nothing)_
 ### Fixed

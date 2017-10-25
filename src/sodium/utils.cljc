@@ -7,6 +7,23 @@
    [clojure.spec.alpha :as s]
    [clojure.string :as str]))
 
+
+(defn ci-compare
+  "Case-insensitive string compare"
+  [s1 s2]
+  (compare (str/upper-case s1) (str/upper-case s2)))
+
+(defn ci-sort
+  "Case-insensitive string sort"
+  [l]
+  (sort-by str/upper-case l))
+
+(defn ci-includes?
+  "Case-insensitive string inclusion test"
+  [s substr]
+  (str/includes? (str/upper-case s) (str/upper-case substr)))
+
+
 (defn validate
   "Like s/valid?, but show the error like s/assert. Useful for pre-conditions."
   [spec x]
