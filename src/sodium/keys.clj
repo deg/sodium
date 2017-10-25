@@ -320,6 +320,7 @@
               :inverted?
               :label
               :label-position
+              :list                    ;; *** NOT LISTED IN DOC!
               :loading
               :on-change
               :size

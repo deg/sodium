@@ -5,6 +5,7 @@
 _(nothing)_
 ### Added
 - Add utils/ci-compare, utils/ci-sort and utils/ci-include?
+- Add nax/draw-tags, nax/tag-adder, and nax/tag-selector
 ### Removed
 _(nothing)_
 ### Fixed
