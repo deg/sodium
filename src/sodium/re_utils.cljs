@@ -25,10 +25,8 @@
 (defn <sub
   "Shorthand for re-frame subscribe and deref."
   ([subscription]
-   {:pre [(utils/validate vector? subscription)]}
    (-> subscription re-frame/subscribe deref))
   ([subscription default]
-   {:pre [(utils/validate vector? subscription)]}
    (or (<sub subscription) default)))
 
 

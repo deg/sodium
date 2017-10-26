@@ -107,11 +107,13 @@ expect this will grow rapidly with time. PRs are welcome here, though I'm likely
 opinionated about what I accept.
 
 #### In `sodium.utils`
+- ci-compare, ci-sort, and ci-include? - Case-insensitive string functions
 - `validate` - Wrapper for Clojure specs checking in pre-conditions.
 - "Camelize" functions - Convert Clojure-style names to JavaScript style
 
 #### In `sodium.re-utils`
 - `<sub` and `>evt` - Re-frame wrappers, taken from <https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions>
+- `sub2` - Shorthand for a simple re-frame 'level-2' subscription (one that simply accesses the db)
 
 #### In `sodium.chars`
 
@@ -143,12 +145,19 @@ historical reasons and will probably change soon:
   this, once I realized the problem, was simple: the component needs to explicitly
   speicify a type of "button." The `na/form-button` component handles this
   automatically.
-- `nax\app-header` - Large header.
-- `nax\panel-header` - Medium header.
-- `nax\panel-subheader` - Small header.
-- `nax\section-header` - Medium de-emphasized header.
-- `nax\subsection-header` - Small de-emphasized header.
-- `nax\labelled-field` - Form field with label and arbitrary content.
+- Headers and section dividers
+  - `nax/app-header` - Large header.
+  - `nax/panel-header` - Medium header.
+  - `nax/panel-subheader` - Small header.
+  - `nax/section-header` - Medium de-emphasized header.
+  - `nax/subsection-header` - Small de-emphasized header.
+  - `nax/labelled-field` - Form field with label and arbitrary content.
+- Simple tagsonomy tag support. Management of a set of tag keywords, including the ability
+  to select one or more. API:
+  - `nax/draw-tags` - Component that draws a row of tags
+  - `nax/tag-adder` - Component that lets the user add a tag
+  - `nax tag-selector` - Component that lets the user select a tag
+- `nax/google-ad` - Google advertisement component
 
 ### Type-checked wrappers
 
@@ -203,7 +212,7 @@ functions to work with both Sodium and Soda-ash components.
 
 Some current limitations:
 
-- I've only defined some components so far; only about a dozen of the 140+ exported by Soda-ash.
+- I've only defined some components so far; only about thirty of the 140+ exported by Soda-ash.
 - I've tried to list all the valid parameters for each component. I built these lists
   mostly from the Semantic UI React [documentation](https://react.semantic-ui.com/), but
   discovered them to be incomplete. I've added missing parameters as I discovered them,

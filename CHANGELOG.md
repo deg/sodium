@@ -4,12 +4,14 @@
 ### Changed
 _(nothing)_
 ### Added
-- Add utils/ci-compare, utils/ci-sort and utils/ci-include?
-- Add nax/draw-tags, nax/tag-adder, and nax/tag-selector
+- Add `utils/ci-compare`, `utils/ci-sort` and `utils/ci-include?`
+- Add `nax/draw-tags`, `nax/tag-adder`, and `nax/tag-selector`
+- Add `nax/google-ad`
+- Add `utils/sub2`
 ### Removed
 _(nothing)_
 ### Fixed
-_(nothing)_
+- Removed over-eager error checking from `<sub`. It was less useful than re-frame's internal reporting
 
 ## [0.6.1]
 ### Changed
