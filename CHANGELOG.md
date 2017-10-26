@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Changed
-_(nothing)_
+- Moved to Clojure 1.9.0-beta3
 ### Added
 - Add `utils/ci-compare`, `utils/ci-sort` and `utils/ci-include?`
 - Add `nax/draw-tags`, `nax/tag-adder`, and `nax/tag-selector`
