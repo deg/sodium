@@ -192,3 +192,31 @@
                   :value chosen-tags
                   :on-change (na/>event event-set-selected-tags #{} set)
                   :options (na/dropdown-list available-tags identity identity)}]))
+
+
+;;; GOOGLE ADS
+
+(defn google-ad
+  "Google advert component. See
+  https://react.semantic-ui.com/views/advertisement and
+  https://www.google.com/adsense.
+
+  - unit, ad-client, ad-slot - Supplied by your Google ad campaign
+  - test - Text to render instead of a real ad. You will typically supply
+  this in your development builds."
+  [& {:keys [unit ad-client ad-slot test]}]
+  (reagent/create-class
+   {:display-name "google-ad"
+    :component-did-mount
+    #(when (and js.window.adsbygoogle (not test))
+       (. js.window.adsbygoogle push {}))
+    :reagent-render
+    (fn [& {:keys [unit ad-client ad-slot]}]
+      [na/advertisement {:unit unit :centered? true :test test}
+       (when-not test
+         [:ins {:class-name "adsbygoogle"
+                :style {:display "block"}
+                :data-ad-format "auto"
+                :data-ad-client ad-client
+                :data-ad-slot ad-slot}])])}))
+
