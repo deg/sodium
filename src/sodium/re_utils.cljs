@@ -9,6 +9,13 @@
    [sodium.utils :as utils]))
 
 
+(defn sub2
+  "Shorthand for simple 'layer 2` usage of re-sub"
+  [key db-path]
+  (re-frame/reg-sub
+   key
+   (fn [db _] (get-in db db-path))))
+
 
 ;; Ideas based on https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions
 
