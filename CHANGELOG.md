@@ -2,22 +2,30 @@
 
 ## [Unreleased]
 ### Changed
+_(nothing)_
+### Added
+_(nothing)_
+### Removed
+_(nothing)_
+### Fixed
+_(nothing)_
+
+## [0.7.0] - 2017-10-26
+### Changed
 - Moved to Clojure 1.9.0-beta3
 ### Added
 - Add `utils/ci-compare`, `utils/ci-sort` and `utils/ci-include?`
 - Add `nax/draw-tags`, `nax/tag-adder`, and `nax/tag-selector`
 - Add `nax/google-ad`
 - Add `utils/sub2`
-### Removed
-_(nothing)_
 ### Fixed
 - Removed over-eager error checking from `<sub`. It was less useful than re-frame's internal reporting
 
-## [0.6.1]
+## [0.6.1] - 2017-10-15
 ### Changed
 - Updated dependencies: clojure, clojurescript
 
-## [0.6.0]
+## [0.6.0] - 2017-10-15
 ### Changed
 - Updated dependencies: re-frame, lein-doo
 ### Added

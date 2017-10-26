@@ -14,12 +14,12 @@ Semantic UI in re-frame projects:
 ### Why "Sodium"?
 
 The element sodium is highly reactive. It also starts with an "S", like Soda-ash and
-Semantic-UI. In addition, the chemical symbol for sodium is "NA", nicely similar to the
-"SA" abbreviation used for the Soda-ash namespace. And, hey, I like puns.
+Semantic-UI. The chemical symbol for sodium is "NA", nicely similar to the "SA"
+abbreviation used for the Soda-ash namespace. And, hey, I like bad puns.
 
 ### State of this project
 
-Sodium is still an early work in progress. I am using it to help me with other projects
+Sodium is still a early work in progress. I am using it to help me with other projects
 and have only addded functionality that I need and can test.  Sodium will only grow as
 it helps me (or other contributers) accomplish what they need. If you need features now,
 PRs are welcome.
@@ -44,7 +44,7 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:
 
-- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.6.1"]`
+- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.7.0"]`
   (Or, copy the clojars label above, if I forgot to update this line!)
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
   "0.4.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
