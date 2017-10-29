@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Changed
-_(nothing)_
+- Incompatible parameter changes to the tagsonomy API (draw-tags, tag-adder, and tag-selector)
 ### Added
 _(nothing)_
 ### Removed

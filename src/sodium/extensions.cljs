@@ -71,6 +71,7 @@
 
 (re-frame/reg-sub
  ;; Default sub for getting the set of all tags.
+ ::all-tags
  (fn [db _]
    (set (get db ::all-tags))))
 
@@ -95,11 +96,11 @@
 
 (defn- draw-tag
   "Draw one tag in a list of tags. See draw-tags"
-  [{:keys [sub-selected-tags event-set-selected-tags selected-class unselected-class]} tag]
-  (let [selected-tags (<sub sub-selected-tags #{})
+  [{:keys [selected-tags-sub set-selected-tags-event selected-class unselected-class]} tag]
+  (let [selected-tags (<sub selected-tags-sub #{})
         selected? (contains? selected-tags tag)]
     [na/list-item {:key tag
-                   :on-click #(>evt (conj event-set-selected-tags
+                   :on-click #(>evt (conj set-selected-tags-event
                                           ((if selected? disj conj) selected-tags tag)))}
      [:span {:class (str "tag "
                          (if selected? selected-class unselected-class))}
@@ -111,24 +112,24 @@
   selected tags. Clicking on a tag will toggle it between selected and unselected.
 
   Options:
-  - :sub-selected-tags       - Re-frame subscription that returns the set of selected tags
-  - :event-set-selected-tags - Re-frame event that sets the set of selected tags
+  - :selected-tags-sub       - Re-frame subscription that returns the set of selected tags
+  - :set-selected-tags-event - Re-frame event that sets the set of selected tags
   - :selected-class          - CSS class name for selected tags
   - :unselected-class        - CSS class name for unselected tags
   - :sort?                   - Should the list of tags be sorted
 
   - tags                     - Set or sequence of tags to display"
-  [{:keys [sub-selected-tags event-set-selected-tags selected-class unselected-class :sort?]
-    :or {sub-selected-tags       [::selected-tags]
-         event-set-selected-tags [::selected-tags]
+  [{:keys [selected-tags-sub set-selected-tags-event selected-class unselected-class :sort?]
+    :or {selected-tags-sub       [::selected-tags]
+         set-selected-tags-event [::selected-tags]
          selected-class          "selected-tag"
          unselected-class        "unselected-tag"
          sort?                   true}}
    tags]
   [na/list-na {:class-name "tags"
                :horizontal? true}
-   (doall (map (partial draw-tag {:sub-selected-tags       sub-selected-tags
-                                  :event-set-selected-tags event-set-selected-tags
+   (doall (map (partial draw-tag {:selected-tags-sub       selected-tags-sub
+                                  :set-selected-tags-event set-selected-tags-event
                                   :selected-class          selected-class
                                   :unselected-class        unselected-class})
                (if sort?
@@ -140,38 +141,42 @@
   "Component that lets the user add a tag (existing or new) to the set of selected tags.
 
   Options:
-  - :sub-all-tags            - Re-frame subscription that returns the set of all tags
-  - :sub-selected-tags       - Re-frame subscription that returns the set of selected tags
-  - :event-set-selected-tags - Re-frame event that sets the set of selected tags"
-  [{:keys [sub-all-tags sub-selected-tags event-set-selected-tags]
-    :or {sub-all-tags       [::all-tags]
-         sub-selected-tags  [::selected-tags]
-         event-set-selected-tags [::selected-tags]}}]
-  (let [text (reagent/atom "")]
-    (fn []
-      (let [all-tags (<sub sub-all-tags)
-            selected-tags (<sub sub-selected-tags #{})
-            available-tags (utils/ci-sort (clojure.set/difference all-tags selected-tags))
-            ]
-        [na/grid {:container? true}
-         [na/grid-row {}
-          [draw-tags {:sub-selected-tags       sub-selected-tags
-                      :event-set-selected-tags [:update-page-param-val :tags]}
-           selected-tags]]
-         [na/grid-row {}
-          `[:datalist {:id "tags"}
-            ~(map (fn [tag] [:option {:key tag :value tag}])
-                  available-tags)]
-          [na/input {:type :text
-                     :list "tags"
-                     :action (when-not (empty? @text)
-                               {:icon "add"
-                                :on-click #(let [tag (conj selected-tags @text)]
-                                            (>evt (conj event-set-selected-tags tag))
-                                            (reset! text ""))})
-                     :placeholder "add tag"
-                     :value      (na/<atom text "")
-                     :on-change  (na/>atom text)}]]]))))
+  - :all-tags-sub            - Re-frame subscription that returns the set of all tags
+  - :selected-tags-sub       - Re-frame subscription that returns the set of selected tags
+  - :set-selected-tags-event - Re-frame event that sets the set of selected tags
+  - :partial-tag-text        - Atom to use to hold text of new tag before it is added. This
+                               parameter is not often needed, but is important if something
+                               outside us needs to watch our exact state. I use this, for
+                               example, when I don't want to let a dialog close if the user
+                               has started to create a new tag but has not yet saved it.   "
+  [{:keys [all-tags-sub selected-tags-sub set-selected-tags-event partial-tag-text]
+    :or {all-tags-sub            [::all-tags]
+         selected-tags-sub       [::selected-tags]
+         set-selected-tags-event [::selected-tags]
+         partial-tag-text        (reagent/atom "") }}]
+  (fn []
+    (let [all-tags (<sub all-tags-sub)
+          selected-tags (<sub selected-tags-sub #{})
+          available-tags (utils/ci-sort (clojure.set/difference all-tags selected-tags))]
+      [na/grid {:container? true}
+       [na/grid-row {}
+        [draw-tags {:selected-tags-sub       selected-tags-sub
+                    :set-selected-tags-event set-selected-tags-event}
+         selected-tags]]
+       [na/grid-row {}
+        `[:datalist {:id "tags"}
+          ~(map (fn [tag] [:option {:key tag :value tag}])
+                available-tags)]
+        [na/input {:type :text
+                   :list "tags"
+                   :action (when-not (empty? @partial-tag-text)
+                             {:icon "add"
+                              :on-click #(let [tag (conj selected-tags @partial-tag-text)]
+                                           (>evt (conj set-selected-tags-event tag))
+                                           (reset! partial-tag-text ""))})
+                   :placeholder "add tag"
+                   :value      (na/<atom partial-tag-text "")
+                   :on-change  (na/>atom partial-tag-text)}]]])))
 
 
 (defn tag-selector
@@ -180,17 +185,17 @@
   Options:
   - :sub-all-tags            - Re-frame subscription that returns the set of all tags
   - :sub-selected-tags       - Re-frame subscription that returns the set of selected tags
-  - :event-set-selected-tags - Re-frame event that sets the set of selected tags"
-  [{:keys [sub-all-tags sub-selected-tags event-set-selected-tags]
-    :or {sub-all-tags       [::all-tags]
-         sub-selected-tags  [::selected-tags]
-         event-set-selected-tags [::selected-tags]}}]
+  - :set-selected-tags-event - Re-frame event that sets the set of selected tags"
+  [{:keys [sub-all-tags sub-selected-tags set-selected-tags-event]
+    :or {sub-all-tags            [::all-tags]
+         sub-selected-tags       [::selected-tags]
+         set-selected-tags-event [::selected-tags]}}]
   (let [available-tags (utils/ci-sort (<sub sub-all-tags))
         chosen-tags (utils/ci-sort (<sub sub-selected-tags #{}))]
     [na/dropdown {:multiple? true
                   :button? true
                   :value chosen-tags
-                  :on-change (na/>event event-set-selected-tags #{} set)
+                  :on-change (na/>event set-selected-tags-event #{} set)
                   :options (na/dropdown-list available-tags identity identity)}]))
 
 
