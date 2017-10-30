@@ -183,15 +183,15 @@
   "Component that lets the user select tags
 
   Options:
-  - :sub-all-tags            - Re-frame subscription that returns the set of all tags
-  - :sub-selected-tags       - Re-frame subscription that returns the set of selected tags
+  - :all-tags-sub            - Re-frame subscription that returns the set of all tags
+  - :selected-tags-sub       - Re-frame subscription that returns the set of selected tags
   - :set-selected-tags-event - Re-frame event that sets the set of selected tags"
-  [{:keys [sub-all-tags sub-selected-tags set-selected-tags-event]
-    :or {sub-all-tags            [::all-tags]
-         sub-selected-tags       [::selected-tags]
+  [{:keys [all-tags-sub selected-tags-sub set-selected-tags-event]
+    :or {all-tags-sub            [::all-tags]
+         selected-tags-sub       [::selected-tags]
          set-selected-tags-event [::selected-tags]}}]
-  (let [available-tags (utils/ci-sort (<sub sub-all-tags))
-        chosen-tags (utils/ci-sort (<sub sub-selected-tags #{}))]
+  (let [available-tags (utils/ci-sort (<sub all-tags-sub))
+        chosen-tags (utils/ci-sort (<sub selected-tags-sub #{}))]
     [na/dropdown {:multiple? true
                   :button? true
                   :value chosen-tags
