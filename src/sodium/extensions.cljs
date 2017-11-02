@@ -87,6 +87,12 @@
  (fn [db _]
    (set (get db ::selected-tags))))
 
+(re-frame/reg-sub
+ ::class-of-tag
+ ;; Default sub for getting the class of a tag
+ (fn [db [_ tag]] "tag"))
+
+
 (re-frame/reg-event-db
  ;; Default event for setting set of selected tags
  ::selected-tags
@@ -96,13 +102,18 @@
 
 (defn- draw-tag
   "Draw one tag in a list of tags. See draw-tags"
-  [{:keys [selected-tags-sub set-selected-tags-event selected-class unselected-class]} tag]
+  [{:keys [selected-tags-sub
+           set-selected-tags-event
+           class-of-tag-sub
+           selected-class
+           unselected-class]} tag]
   (let [selected-tags (<sub selected-tags-sub #{})
         selected? (contains? selected-tags tag)]
     [na/list-item {:key tag
                    :on-click #(>evt (conj set-selected-tags-event
                                           ((if selected? disj conj) selected-tags tag)))}
-     [:span {:class (str "tag "
+     [:span {:class (str (<sub (conj class-of-tag-sub tag))
+                         " "
                          (if selected? selected-class unselected-class))}
       tag]]))
 
@@ -114,14 +125,21 @@
   Options:
   - :selected-tags-sub       - Re-frame subscription that returns the set of selected tags
   - :set-selected-tags-event - Re-frame event that sets the set of selected tags
+  - :class-of-tag-sub       - Re-frame subscription that returns the CSS class for a tag
   - :selected-class          - CSS class name for selected tags
   - :unselected-class        - CSS class name for unselected tags
   - :sort?                   - Should the list of tags be sorted
 
   - tags                     - Set or sequence of tags to display"
-  [{:keys [selected-tags-sub set-selected-tags-event selected-class unselected-class :sort?]
+  [{:keys [selected-tags-sub
+           set-selected-tags-event
+           class-of-tag-sub
+           selected-class
+           unselected-class
+           sort?]
     :or {selected-tags-sub       [::selected-tags]
          set-selected-tags-event [::selected-tags]
+         class-of-tag-sub        [::class-of-tag]
          selected-class          "selected-tag"
          unselected-class        "unselected-tag"
          sort?                   true}}
@@ -130,6 +148,7 @@
                :horizontal? true}
    (doall (map (partial draw-tag {:selected-tags-sub       selected-tags-sub
                                   :set-selected-tags-event set-selected-tags-event
+                                  :class-of-tag-sub        class-of-tag-sub
                                   :selected-class          selected-class
                                   :unselected-class        unselected-class})
                (if sort?

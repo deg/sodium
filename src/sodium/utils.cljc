@@ -15,8 +15,14 @@
 
 (defn ci-sort
   "Case-insensitive string sort"
-  [l]
-  (sort-by str/upper-case l))
+  [coll]
+  (sort-by str/upper-case coll))
+
+(defn ci-sort-by
+    "Case-insensitive string sort-by"
+  [keyfn coll]
+  (sort-by (comp str/upper-case keyfn)
+           coll))
 
 (defn ci-includes?
   "Case-insensitive string inclusion test"
