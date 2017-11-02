@@ -9,7 +9,7 @@
 ### Removed
 _(nothing)_
 ### Fixed
-_(nothing)_
+- :disabled? was missing from button
 
 ## [0.7.0] - 2017-10-26
 ### Changed

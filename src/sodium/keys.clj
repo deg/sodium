@@ -50,6 +50,7 @@
               :color          ;; enum: [red orange yellow olive green teal blue violet purple pink brown grey black facebook google plus instagram linkedin twitter vk youtube]
               :compact?       ;; bool
               :content        ;; custom
+              :disabled?      ;; bool
               :floated        ;; enum: [left right]
               :fluid?         ;; bool
               :icon           ;; custom
