@@ -172,30 +172,39 @@
     :or {all-tags-sub            [::all-tags]
          selected-tags-sub       [::selected-tags]
          set-selected-tags-event [::selected-tags]
-         partial-tag-text        (reagent/atom "") }}]
+         partial-tag-text        (reagent/atom "")}}]
   (fn []
     (let [all-tags (<sub all-tags-sub)
           selected-tags (<sub selected-tags-sub #{})
-          available-tags (utils/ci-sort (clojure.set/difference all-tags selected-tags))]
+          available-tags (utils/ci-sort (clojure.set/difference all-tags selected-tags))
+          list-id (str (gensym "tags-"))
+          input-id (str (gensym "tags-input-"))]
       [na/grid {:container? true}
        [na/grid-row {}
         [draw-tags {:selected-tags-sub       selected-tags-sub
                     :set-selected-tags-event set-selected-tags-event}
          selected-tags]]
        [na/grid-row {}
-        `[:datalist {:id "tags"}
+        `[:datalist {:id ~list-id}
           ~(map (fn [tag] [:option {:key tag :value tag}])
                 available-tags)]
         [na/input {:type :text
-                   :list "tags"
+                   :id input-id
+                   :list list-id
+                   ;; [???] Setting :value fails subtly, updating datalist options for
+                   ;; the previous character entered as each character is entered.
+                   ;; So, :default-value and pay the piper below
+                   :default-value (na/<atom partial-tag-text "")
+                   :on-change (na/>atom partial-tag-text)
                    :action (when-not (empty? @partial-tag-text)
                              {:icon "add"
                               :on-click #(let [tag (conj selected-tags @partial-tag-text)]
                                            (>evt (conj set-selected-tags-event tag))
-                                           (reset! partial-tag-text ""))})
-                   :placeholder "add tag"
-                   :value      (na/<atom partial-tag-text "")
-                   :on-change  (na/>atom partial-tag-text)}]]])))
+                                           (reset! partial-tag-text "")
+                                           ;; Need to clear field explicitly, because
+                                           ;; :default-value above
+                                           (set! (.-value (.getElementById js/document input-id)) ""))})
+                   :placeholder "add tag"}]]])))
 
 
 (defn tag-selector

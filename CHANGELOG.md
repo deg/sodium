@@ -10,6 +10,7 @@
 _(nothing)_
 ### Fixed
 - :disabled? was missing from button
+- tag-adder had not been updating datalist properly
 
 ## [0.7.0] - 2017-10-26
 ### Changed

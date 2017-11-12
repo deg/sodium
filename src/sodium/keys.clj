@@ -29,6 +29,7 @@
               :class-name     ;; string
 
               ;; *** NOT LISTED IN DOC!
+              :id
               :key
               :style
               :on-click
