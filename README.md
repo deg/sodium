@@ -40,6 +40,7 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 ## Setup
 
 [![Clojars Project](https://img.shields.io/clojars/v/com.degel/sodium.svg)](https://clojars.org/com.degel/sodium)
+[![Dependencies Status](https://versions.deps.co/deg/sodium/status.svg)](https://versions.deps.co/deg/sodium)
 
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:

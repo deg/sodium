@@ -3,7 +3,7 @@
 ## [Unreleased]
 ### Changed
 - Incompatible parameter changes to the tagsonomy API (draw-tags, tag-adder, and tag-selector)
-- Moved to Clojure 1.9.0-beta4
+- Moved to Clojure 1.9.0-beta4, soda-ash 0.76.0
 ### Added
 - Ability to customize CSS style of tagsonomy tags
 ### Removed

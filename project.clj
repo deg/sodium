@@ -8,7 +8,7 @@
                  [org.clojure/clojurescript "1.9.946"]
                  [re-frame "0.10.2"]
                  [reagent "0.7.0"]
-                 [soda-ash "0.4.0"]]
+                 [soda-ash "0.76.0"]]
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.8"]]
   :cljsbuild
