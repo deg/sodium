@@ -2,12 +2,20 @@
 
 ## [Unreleased]
 ### Changed
-- Incompatible parameter changes to the tagsonomy API (draw-tags, tag-adder, and tag-selector)
-- Moved to Clojure 1.9.0-beta4, soda-ash 0.76.0
+_(nothing)_
 ### Added
-- Ability to customize CSS style of tagsonomy tags
+_(nothing)_
 ### Removed
 _(nothing)_
+### Fixed
+_(nothing)_
+
+## [0.8.0] - 2017-11-22
+### Changed
+- Incompatible parameter changes to the tagsonomy API (draw-tags, tag-adder, and tag-selector)
+- Deps update: Clojure 1.9.0-RC1, soda-ash 0.76.0
+### Added
+- Ability to customize CSS style of tagsonomy tags
 ### Fixed
 - :disabled? was missing from button
 - tag-adder had not been updating datalist properly
@@ -79,7 +87,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/f312445...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
+[0.8.0]: https://github.com/deg/sodium/compare/f312445...HEAD
 [0.7.0]: https://github.com/deg/sodium/compare/5ecf157...f312445
 [0.6.1]: https://github.com/deg/sodium/compare/bb64849...5ecf157
 [0.6.0]: https://github.com/deg/sodium/compare/a1dd09e...bb64849
