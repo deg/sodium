@@ -4,6 +4,7 @@
 (ns sodium.macros
   (:require
    [clojure.spec.alpha :as s]
+   [iron.utils :refer [camelize-map-keys validate vconcat]]
    [sodium.utils :as utils]
    [sodium.keys :as keys]))
 
@@ -32,18 +33,19 @@
   [name [params-var & other-params]
    {:keys [pre post :sodium.core/keys :sodium.core/key-sets]}
    & component-body]
-  {:pre [(utils/validate symbol? name)
-         (utils/validate symbol? params-var)]}
+  {:pre [(validate symbol? name)
+         (validate symbol? params-var)]}
   (let [all-keys (merge-keys keys key-sets)]
     `(defn ~name [{:keys ~all-keys :as ~params-var} ~@other-params]
-       {:pre ~(utils/vconcat pre
-                             `[(utils/all-keys-valid? (keys ~params-var)
-                                                      ~(set (map keyword all-keys)))])
+       {:pre ~(vconcat pre
+                       `[(utils/all-keys-valid?
+                          (keys ~params-var)
+                          ~(set (map keyword all-keys)))])
         :post ~post}
        ~@component-body)))
 
 (defmacro def-simple-component [name parent key-sets]
   `(defcomponent ~name [params# & body#]
      {:sodium.core/key-sets ~key-sets}
-     (utils/vconcat [~parent (utils/camelize-map-keys params#)]
-                    body#)))
+     (vconcat [~parent (camelize-map-keys params#)]
+               body#)))

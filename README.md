@@ -1,5 +1,15 @@
 # Sodium
 
+## ALERT
+
+Sodium 0.9.0-SNAPSHOT introduces incompatible changes.
+
+I have divided Sodium into two libraries. Sodium retains the Soda-ash/Semantic-UI
+code. But, all the more general utilities have been moved to a new library,
+[Iron](https://github.com/deg/iron).  There will be teething pains, so I recommend
+avoiding these snapshot version unless you want to help me stabilize. I hope to have a
+new version up and stable within a few days.
+
 ## Introduction
 
 Sodium is a wrapper around [soda-ash](https://github.com/gadfly361/soda-ash) which,

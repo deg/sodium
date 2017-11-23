@@ -8,72 +8,37 @@
    [clojure.spec.alpha :as s]
    [re-frame.loggers :refer [console]]
    [soda-ash.core :as sa]
-   [sodium.re-utils :refer [<sub >evt]]
+   [iron.re-utils :refer [<sub >evt]]
+   [iron.utils :refer [validate camelize-map-keys negligible?]]
    [sodium.utils :as utils]))
 
 (s/def :sodium/size #{:tiny :small :medium :large :huge})
 
-(defn- negligible?
-  [x]
-  (if (seqable? x) (empty? x) (not x)))
+(defn value
+  "A bit hackish, but I think this is enough to get the useful value
+  from any Semantic-UI-React element."
+  [_dom_event data]
+  (js->clj
+   (or (.-value data) (.-checked data))))
 
-(defn >event
-  "Return a function suitable for an on-* handler, to deliver the value
-  into into a re-frame event. See also >atom.
-  The first argument is a re-frame event vector, into which the value
-  will be conjed as the final element.
-  It is followed by two optional arguments: a default value that will
-  be used when the value is empty, and a 'coercer' function to convert
-  the value into a suitable form for the event.
-  Note that the default value is _not_ passed through the coercer."
-  ;; [TODO] The line about the default value is obviously wrong. Check users and fix!
-  ([event]
-   (>event event ""))
-  ([event default]
-   (>event event default identity))
-  ([event default coercer]
-   #(>evt (let [value (or (.-value %2) (.-checked %2))]
-            (conj event
-                  (coercer (if (negligible? value)
-                             default
-                             value)))))))
+(defn value->event-fn
+  "Return a function that will collect the value from a
+  react-semantic-ui dom event and pass it to a re-frame event"
+  ([event] (value->event-fn event {}))
+  ([event {:keys [default coercer] :as >evt-params}]
+   (fn [dom_event data]
+     (>evt event (value dom_event data) >evt-params))))
 
-(defn >events
-  "Utility function to dispatch multiple events from an on-* hander.
-  The syntax is a bit opaque, because we have to wrap both the event
-  parameters and the parameters to >event (default and coercer).
-
-  So, a usage looks like:
-
-    (na/>events [[[:update-age :in-minutes] 42]
-                 [[:set-color] :cyan nearest-color]])
-  "
-  [events]
-  (fn [dom-event param-map]
-    (run! (fn [event]
-            ((apply >event event) dom-event param-map))
-          events)))
-
-(defn >atom
-  "Return a function suitable for an on-* handler, to deliver the value
-  into into an atom. This would typically be used to store a result into
-  a local reagent atom. See also >event.
-  The first argument is an atom, which the value will be reset! into.
-  It is followed by two optional arguments: a default value that will
-  be used when the value is empty, and a 'coercer' function to convert
-  the value into a suitable form for the event.
-  Note that the default value is _not_ passed through the coercer."
-  ;; [TODO] Default wrong here too
-  ([atom]
-   (>atom atom ""))
-  ([atom default]
-   (>atom atom default identity))
-  ([atom default coercer]
-   #(->> (or (.-value %2) (.-checked %2))
-         js->clj
-         coercer
-         (reset! atom))))
-
+(defn value->atom-fn
+  "Return a function that will collect the value from a
+  react-semantic-ui dom event and pass it into an atom"
+  ([atom] (value->atom-fn atom {}))
+  ([atom {:keys [default coercer] :or {coercer identity}}]
+   (fn [dom_event data]
+     (let [value (value dom_event data)]
+       (reset! atom (coercer (if (negligible? value)
+                               default
+                               value)))))))
 
 (defn list-option
   "Convert value and text info format suitable for a React list element
@@ -89,18 +54,6 @@
   (mapv (fn [item]
          (list-option (value-fn item) (text-fn item)))
         items))
-
-(defn <atom
-  "Get a value from an atom. Suitable to use, e.g., as the :value or
-  :default-value parameter to a component.
-  Atom is the atom to be dereferenced. It will be translated by access-fn.
-  If null, default will be supplied instead."
-  ([atom]
-   (<atom atom nil))
-  ([atom default]
-   (<atom atom default identity))
-  ([atom default access-fn]
-   (or (access-fn @atom) default)))
 
 
 ;;; Components that we supply so far. More coming soon.
@@ -149,19 +102,19 @@
 (defcomponent form-button [params]
   {::key-sets [:basic :form-field :button]
    ::keys [data-tooltip]
-   :pre [(utils/validate (s/nilable ifn?) (:on-click params))
-         (utils/validate (s/nilable string?) (:data-tooltip params))]}
+   :pre [(validate (s/nilable ifn?) (:on-click params))
+         (validate (s/nilable string?) (:data-tooltip params))]}
   [sa/FormButton (-> params
                      (update :type #(or % "button"))
-                     (utils/camelize-map-keys :exclude [:data-tooltip]))])
+                     (camelize-map-keys :exclude [:data-tooltip]))])
 
 (defcomponent button [params]
   {::key-sets [:basic :button]
    ::keys [data-tooltip]
-   :pre [(utils/validate (s/nilable ifn?) (:on-click params))
-         (utils/validate (s/nilable string?) (:data-tooltip params))]}
+   :pre [(validate (s/nilable ifn?) (:on-click params))
+         (validate (s/nilable string?) (:data-tooltip params))]}
   [sa/Button (-> params
                  (update :type #(or % "button"))
-                 (utils/camelize-map-keys :exclude [:data-tooltip]))])
+                 (camelize-map-keys :exclude [:data-tooltip]))])
 
 

@@ -7,8 +7,9 @@
    [reagent.core :as reagent]
    [re-frame.core :as re-frame]
    [re-frame.loggers :refer [console]]
+   [iron.re-utils :refer [<sub >evt]]
+   [iron.utils :refer [ci-sort validate]]
    [sodium.core :as na]
-   [sodium.re-utils :refer [<sub >evt]]
    [sodium.utils :as utils]))
 
 
@@ -17,9 +18,9 @@
 ;;; Various page and section headers/dividers
 
 (defn- header-maker [title size dividing? sub?]
-  {:pre [(utils/validate (s/or :string string? :event vector?) title)
-         (utils/validate boolean? dividing?)
-         (utils/validate :sodium/size size)]}
+  {:pre [(validate (s/or :string string? :event vector?) title)
+         (validate boolean? dividing?)
+         (validate :sodium/size size)]}
   (na/header {:content (if (vector? title)
                          (str (<sub title))
                          title)
@@ -152,7 +153,7 @@
                                   :selected-class          selected-class
                                   :unselected-class        unselected-class})
                (if sort?
-                 (utils/ci-sort tags)
+                 (ci-sort tags)
                  tags)))])
 
 
@@ -176,7 +177,7 @@
   (fn []
     (let [all-tags (<sub all-tags-sub)
           selected-tags (<sub selected-tags-sub #{})
-          available-tags (utils/ci-sort (clojure.set/difference all-tags selected-tags))
+          available-tags (ci-sort (clojure.set/difference all-tags selected-tags))
           list-id (str (gensym "tags-"))
           input-id (str (gensym "tags-input-"))]
       [na/grid {:container? true}
@@ -194,8 +195,8 @@
                    ;; [???] Setting :value fails subtly, updating datalist options for
                    ;; the previous character entered as each character is entered.
                    ;; So, :default-value and pay the piper below
-                   :default-value (na/<atom partial-tag-text "")
-                   :on-change (na/>atom partial-tag-text)
+                   :default-value (or @partial-tag-text "")
+                   :on-change (na/value->atom-fn partial-tag-text)
                    :action (when-not (empty? @partial-tag-text)
                              {:icon "add"
                               :on-click #(let [tag (conj selected-tags @partial-tag-text)]
@@ -218,12 +219,12 @@
     :or {all-tags-sub            [::all-tags]
          selected-tags-sub       [::selected-tags]
          set-selected-tags-event [::selected-tags]}}]
-  (let [available-tags (utils/ci-sort (<sub all-tags-sub))
-        chosen-tags (utils/ci-sort (<sub selected-tags-sub #{}))]
+  (let [available-tags (ci-sort (<sub all-tags-sub))
+        chosen-tags (ci-sort (<sub selected-tags-sub #{}))]
     [na/dropdown {:multiple? true
                   :button? true
                   :value chosen-tags
-                  :on-change (na/>event set-selected-tags-event #{} set)
+                  :on-change (na/value->event-fn set-selected-tags-event {:default #{} :coercer set})
                   :options (na/dropdown-list available-tags identity identity)}]))
 
 
