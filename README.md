@@ -4,10 +4,10 @@
 
 Sodium 0.9.0 introduces incompatible changes.
 
-I have divided Sodium into two libraries. Sodium retains the Soda-ash/Semantic-UI
-code. But, all the more general utilities have been moved to a new library,
+I have divided Sodium into two libraries. The Soda-ash/Semantic-UI code remains in
+Sodium. But all the more general utilities have been moved to a new library,
 [Iron](https://github.com/deg/iron). As of today, this is working well enough for me to
-use.  But there will be teething pains, so please let me know if you hit any snags.
+use.  But there may be teething pains, so please let me know if you hit any snags.
 
 ## Introduction
 
@@ -17,8 +17,8 @@ in turn, is a ClojureScript wrapper around
 adds two sets of features into the mix, both aimed at making it easier to include
 Semantic UI in re-frame projects:
 
-1. ~~Utility functions to get values in and out of components.~~ Most of this has moved
-   to [Iron](https://github.com/deg/iron).
+1. Utility functions to get values out of Semantic-UI components. (See also similar,
+   though more general, support in Iron).
 2. Validity-checking aids to help avoid typos.
 
 ### Why "Sodium"?
@@ -36,7 +36,7 @@ PRs are welcome.
 
 ### Background
 
-I have used [re-com](https://github.com/Day8/re-com) for a while in my
+I used [re-com](https://github.com/Day8/re-com) in some of my earlier
 [re-frame](https://github.com/Day8/re-frame) projects. Re-com is a wonderful, reliable,
 easy to use, and opinionated library of UI components. In many ways, it was
 perfect. But, as the authors warn, it is designed for desktop applications. When I tried
@@ -55,17 +55,18 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:
 
-- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.7.0"]`
+- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.9.0"]`
   (Or, copy the clojars label above, if I forgot to update this line!)
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
-  "0.4.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
+  "0.76.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
   any recent changes).
 - You will also need to include the Semantic UI stylesheet in your _index.html_:
- `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css">`
-- Finally, you will need to require Sodium, and maybe also Soda-ash, in your namespace:
+ `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">`
+- Finally, you will need to require Sodium, and maybe also Iron and Soda-ash, in your namespace:
   - `[sodium.core :as na]` - Most of Sodium's functionality
-  - `[sodium.utils :refer [<sub >evt]]` - Useful utilities
-  - `[sodium.chars :as chars]` - Minor Unicocde support
+  - `[iron.utils :as utils]` - Useful utilities
+  - `[iron.re-utils :refer [sub2 <sub >evt]]` - Useful utilities
+  - `[iron.chars :as chars]` - Minor Unicocde support
   - `[soda-ash.core :as sa]` - Soda-ash functions
 
 
@@ -83,7 +84,7 @@ UI from your re-frame projects. You can use it in several ways:
 
 ### Data-in and -out
 
-Sodium offers the following in sodium.core (often :refer'd to as `na/`)
+Sodium offers the following in sodium.core (often `:refer`'d to as `na`)
 
 - `na/value->event-fn`, and `na/>value->atom-fn` - Useful in `:on-*` handlers to pass a
   value to a re-frame event or react atom. They return a function that can be used as a
@@ -222,7 +223,7 @@ purpose. Most of them are still in my other projects, mostly not public, that us
 Sodium. But, I intend to migrate them into Sodium as I gain comfort.
 
 A few of these are already in Sodium. Most are in the sodium.extensions package (usually
-`:refer`-ed as `nax`'). But, `form-button` and `button` are in sodium.core. This is for
+`:refer`'d as `nax`'). But, `form-button` and `button` are in sodium.core. This is for
 historical reasons and will probably change soon:
 
 - `na\form-button` and `na\button` - HTML forms are, by default, very tied to the
