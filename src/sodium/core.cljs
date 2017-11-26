@@ -12,6 +12,7 @@
    [iron.utils :refer [validate camelize-map-keys negligible?]]
    [sodium.utils :as utils]))
 
+;; [TODO] Need _much_ more type-checking for CSS/HTML/Semantic-UI enumerated types
 (s/def :sodium/size #{:tiny :small :medium :large :huge})
 
 (defn value
@@ -116,5 +117,3 @@
   [sa/Button (-> params
                  (update :type #(or % "button"))
                  (camelize-map-keys :exclude [:data-tooltip]))])
-
-

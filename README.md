@@ -2,13 +2,12 @@
 
 ## ALERT
 
-Sodium 0.9.0-SNAPSHOT introduces incompatible changes.
+Sodium 0.9.0 introduces incompatible changes.
 
 I have divided Sodium into two libraries. Sodium retains the Soda-ash/Semantic-UI
 code. But, all the more general utilities have been moved to a new library,
-[Iron](https://github.com/deg/iron).  There will be teething pains, so I recommend
-avoiding these snapshot version unless you want to help me stabilize. I hope to have a
-new version up and stable within a few days.
+[Iron](https://github.com/deg/iron). As of today, this is working well enough for me to
+use.  But there will be teething pains, so please let me know if you hit any snags.
 
 ## Introduction
 
@@ -18,7 +17,8 @@ in turn, is a ClojureScript wrapper around
 adds two sets of features into the mix, both aimed at making it easier to include
 Semantic UI in re-frame projects:
 
-1. Utility functions to get values in and out of components.
+1. ~~Utility functions to get values in and out of components.~~ Most of this has moved
+   to [Iron](https://github.com/deg/iron).
 2. Validity-checking aids to help avoid typos.
 
 ### Why "Sodium"?
@@ -83,11 +83,16 @@ UI from your re-frame projects. You can use it in several ways:
 
 ### Data-in and -out
 
-Sodium offers the following:
+Sodium offers the following in sodium.core (often :refer'd to as `na/`)
 
-- `na/>event`, `na/>events` and `na/>atom` - Create `:on-*` handlers to
-  pass a value to a re-frame event or react atom.
-- `sodium.core/<atom` - Get a value from a react atom.
+- `na/value->event-fn`, and `na/>value->atom-fn` - Useful in `:on-*` handlers to pass a
+  value to a re-frame event or react atom. They return a function that can be used as a
+  handler, which knows how to extract the relevant value from a semantic-ui component
+  and pass it to a re-frame event or into an atom.  (Note carefully: these do not need
+  to be wrapped `#(...)`. They return a function. This is done to hide the slightly
+  surprising ways in which semantic-ui delivers values from dom events.
+
+I am _not_ happy yet with these two names. Suggestions welcome.
 
 #### Typical usage
 
@@ -99,83 +104,53 @@ Sodium offers the following:
       [na/form {}
        [na/form-input {:label "Email"
                        :type "email"
-                       :on-change (na/>atom email)}]
+                       :on-change (na/>value->atom-fn email)}]
        [na/form-input {:label "Password"
                        :type "password"
-                       :on-change (na/>atom password)}]
+                       :on-change (na/>value->atom-fn password)}]
        [na/form-button {:content "Login"
-                        :on-click (na/>event [:login @email @password])}]])))
+                        :on-click (na/>value->event-fn [:login @email @password])}]])))
 ````
 
 These functions work equally with with Sodium components and bare Soda-ash ones. I
 recommend using Sodium components where available. But, see below, you will still often
 need to use Soda-ash components.
 
+### Lists
+
+`na/list-option` and `na/dropdown-list` are useful for converting data to a shape that
+is useful to pass to Semantic-UI Dropdown or Select component options.
+
+#### Typical usage
+
+````
+(na/dropdown-list 
+[[:one "one"] [:two "two"] [:three "three"]]
+  first
+  second)
+````
+returns:
+````
+[{:key :one, :value :one, :text "one"}
+ {:key :two, :value :two, :text "two"}
+ {:key :three, :value :three, :text "three"}]
+````
+
 ### Helper functions
 
-These are some some of the functions that I've needed often in re-frame projects. I
-expect this will grow rapidly with time. PRs are welcome here, though I'm likely to be
-opinionated about what I accept.
+As of v0.9.0, these have moved to [Iron](https://github.com/deg/iron). Sodium no longer
+includes `ci-*`, `validate`, the "Camelize" functions, `<sub`, `>evt`, `sub2`, unicode
+character definitions, etc. They are all in Iron.
 
-#### In `sodium.utils`
-- ci-compare, ci-sort, and ci-include? - Case-insensitive string functions
-- `validate` - Wrapper for Clojure specs checking in pre-conditions.
-- "Camelize" functions - Convert Clojure-style names to JavaScript style
-
-#### In `sodium.re-utils`
-- `<sub` and `>evt` - Re-frame wrappers, taken from <https://lambdaisland.com/blog/11-02-2017-re-frame-form-1-subscriptions>
-- `sub2` - Shorthand for a simple re-frame 'level-2' subscription (one that simply accesses the db)
-
-#### In `sodium.chars`
-
-Definitions for a few common Unicode characters.
-
-
-### Semantic enhancements
-
-HTML controls offer a lot of freedom, and sometimes too many choices. Our front-end code
-can be much more readable if we define controls with relatively constrained and
-consistent behavior. But, there is an art to doing this right; constrain a control too
-much, and it is perfect for one project, but too limited to be useful in other
-projects. Semantic UI helps a lot, but still offers too many choices for a consistent,
-simple, web page.
-
-I am trying, slowly, to create a set of components that meet my needs yet are general
-purpose. Most of them are still in my other projects, mostly not public, that use
-Sodium. But, I intend to migrate them into Sodium as I gain comfort.
-
-A few of these are already in Sodium. Most are in the sodium.extensions package (usually
-required as `nax`'). But, `form-button` and `button` are in sodium.core. This is for
-historical reasons and will probably change soon:
-
-- `na\form-button` and `na\button` - HTML forms are, by default, very tied to the
-  old-school HTML notions of page submission. This does not play well with the
-  re-frame philosophy that a form handler should simply trigger a re-frame event.
-  When I naively use the Soda-ash sa/FormButton component at first, I was hit with
-  unexpected extra connections to my server, trying to submit the form. The fix for
-  this, once I realized the problem, was simple: the component needs to explicitly
-  speicify a type of "button." The `na/form-button` component handles this
-  automatically.
-- Headers and section dividers
-  - `nax/app-header` - Large header.
-  - `nax/panel-header` - Medium header.
-  - `nax/panel-subheader` - Small header.
-  - `nax/section-header` - Medium de-emphasized header.
-  - `nax/subsection-header` - Small de-emphasized header.
-  - `nax/labelled-field` - Form field with label and arbitrary content.
-- Simple tagsonomy tag support. Management of a set of tag keywords, including the ability
-  to select one or more. API:
-  - `nax/draw-tags` - Component that draws a row of tags
-  - `nax/tag-adder` - Component that lets the user add a tag
-  - `nax tag-selector` - Component that lets the user select a tag
-- `nax/google-ad` - Google advertisement component
 
 ### Type-checked wrappers
 
-This is the most experimental part of Sodium and, sadly, still mostly incomplete.
+Sodium adds a thin, but very useful wrapp around Soda-ash, that type-checks the
+parameters passed to components.  This is the most experimental part of Sodium and,
+sadly, still very incomplete.
 
-So far, it includes the following components, each a very thin wrapper around the
-corresponding Soda-ash / Semantic UI one:
+So far, it includes the following components, each a wrapper around the corresponding
+Soda-ash / Semantic UI one:
 
 - `na/advertisement`: `sa/Advertisement`
 - `na/checkbox`: `sa/Checkbox`
@@ -232,6 +207,45 @@ Some current limitations:
   `[na/form [na/...]]`. Instead, you have to explicitly specify even an empty map:
   `[na/form {} [na/...]]`
 
+
+### Semantic enhancements
+
+HTML controls offer a lot of freedom, and sometimes too many choices. Our front-end code
+can be much more readable if we define controls with relatively constrained and
+consistent behavior. But, there is an art to doing this right; constrain a control too
+much, and it is perfect for one project, but too limited to be useful in other
+projects. Semantic UI helps a lot, but still offers too many choices for a consistent,
+simple, web page.
+
+I am trying, slowly, to create a set of components that meet my needs yet are general
+purpose. Most of them are still in my other projects, mostly not public, that use
+Sodium. But, I intend to migrate them into Sodium as I gain comfort.
+
+A few of these are already in Sodium. Most are in the sodium.extensions package (usually
+`:refer`-ed as `nax`'). But, `form-button` and `button` are in sodium.core. This is for
+historical reasons and will probably change soon:
+
+- `na\form-button` and `na\button` - HTML forms are, by default, very tied to the
+  old-school HTML notions of page submission. This does not play well with the
+  re-frame philosophy that a form handler should simply trigger a re-frame event.
+  When I naively use the Soda-ash sa/FormButton component at first, I was hit with
+  unexpected extra connections to my server, trying to submit the form. The fix for
+  this, once I realized the problem, was simple: the component needs to explicitly
+  speicify a type of "button." The `na/form-button` component handles this
+  automatically.
+- Headers and section dividers
+  - `nax/app-header` - Large header.
+  - `nax/panel-header` - Medium header.
+  - `nax/panel-subheader` - Small header.
+  - `nax/section-header` - Medium de-emphasized header.
+  - `nax/subsection-header` - Small de-emphasized header.
+  - `nax/labelled-field` - Form field with label and arbitrary content.
+- Simple tagsonomy tag support. Management of a set of tag keywords, including the ability
+  to select one or more. API:
+  - `nax/draw-tags` - Component that draws a row of tags
+  - `nax/tag-adder` - Component that lets the user add a tag
+  - `nax tag-selector` - Component that lets the user select a tag
+- `nax/google-ad` - Google advertisement component
 
 ### Internals
 

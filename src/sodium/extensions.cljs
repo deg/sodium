@@ -253,4 +253,3 @@
                 :data-ad-format "auto"
                 :data-ad-client ad-client
                 :data-ad-slot ad-slot}])])}))
-

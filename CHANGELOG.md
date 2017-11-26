@@ -10,6 +10,17 @@ _(nothing)_
 ### Fixed
 _(nothing)_
 
+## [0.9.0] - 2017-11-26
+### Changed
+- Sodium now depends on a new library, Iron. Much of Sodium's general code, that did not
+  rely on Semantic-UI, has been moved to Iron.
+### Removed
+- Many Sodium functions have been moved to Iron. If you can't find something, look in
+  Sodium.  (This library has few enough users that I'm going to be lazy and assume you
+  can find anything that has moved. If you get stuck, give me a shout).
+### Fixed
+_(nothing)_
+
 ## [0.8.0] - 2017-11-22
 ### Changed
 - Incompatible parameter changes to the tagsonomy API (draw-tags, tag-adder, and tag-selector)
@@ -87,7 +98,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/df877f2...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
+[0.9.0]: https://github.com/deg/sodium/compare/df877f2...HEAD
 [0.8.0]: https://github.com/deg/sodium/compare/f312445...df877f2
 [0.7.0]: https://github.com/deg/sodium/compare/5ecf157...f312445
 [0.6.1]: https://github.com/deg/sodium/compare/bb64849...5ecf157

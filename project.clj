@@ -1,5 +1,5 @@
 (defproject
-  com.degel/sodium "0.9.0-SNAPSHOT"
+  com.degel/sodium "0.9.0"
   :description "A wrapper around soda-ash and semantic-ui-react"
   :url "https://github.com/deg/sodium"
   :license {:name "Eclipse Public License"
@@ -9,7 +9,7 @@
                  [re-frame "0.10.2"]
                  [reagent "0.7.0"]
                  [soda-ash "0.76.0"]
-                 [com.degel/iron "0.1.0-SNAPSHOT"]]
+                 [com.degel/iron "0.1.1"]]
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.8"]]
   :cljsbuild
