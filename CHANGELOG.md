@@ -98,14 +98,14 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
-[0.9.0]: https://github.com/deg/sodium/compare/df877f2...HEAD
-[0.8.0]: https://github.com/deg/sodium/compare/f312445...df877f2
-[0.7.0]: https://github.com/deg/sodium/compare/5ecf157...f312445
-[0.6.1]: https://github.com/deg/sodium/compare/bb64849...5ecf157
-[0.6.0]: https://github.com/deg/sodium/compare/a1dd09e...bb64849
-[0.5.0]: https://github.com/deg/sodium/compare/0dd1e35...a1dd09e
-[0.4.0]: https://github.com/deg/sodium/compare/17de322...0dd1e35
-[0.3.0]: https://github.com/deg/sodium/compare/043f00a...17de322
-[0.2.0]: https://github.com/deg/sodium/compare/6c372df...043f00a
-[0.1.0]: https://github.com/deg/sodium/compare/ff21e14...6c372df
+[Unreleased]: https://github.com/deg/sodium/compare/84b52a2...HEAD
+[0.9.0]:      https://github.com/deg/sodium/compare/df877f2...84b52a2
+[0.8.0]:      https://github.com/deg/sodium/compare/f312445...df877f2
+[0.7.0]:      https://github.com/deg/sodium/compare/5ecf157...f312445
+[0.6.1]:      https://github.com/deg/sodium/compare/bb64849...5ecf157
+[0.6.0]:      https://github.com/deg/sodium/compare/a1dd09e...bb64849
+[0.5.0]:      https://github.com/deg/sodium/compare/0dd1e35...a1dd09e
+[0.4.0]:      https://github.com/deg/sodium/compare/17de322...0dd1e35
+[0.3.0]:      https://github.com/deg/sodium/compare/043f00a...17de322
+[0.2.0]:      https://github.com/deg/sodium/compare/6c372df...043f00a
+[0.1.0]:      https://github.com/deg/sodium/compare/ff21e14...6c372df
