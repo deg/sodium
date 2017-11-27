@@ -15,6 +15,7 @@
 ;; [TODO] Need _much_ more type-checking for CSS/HTML/Semantic-UI enumerated types
 (s/def :sodium/size #{:tiny :small :medium :large :huge})
 
+
 (defn value
   "A bit hackish, but I think this is enough to get the useful value
   from any Semantic-UI-React element."
@@ -39,7 +40,10 @@
      (let [value (value dom_event data)]
        (reset! atom (coercer (if (negligible? value)
                                default
-                               value)))))))
+                               value)))
+       ;; (See https://github.com/Day8/re-frame/wiki/Beware-Returning-False)
+       nil))))
+
 
 (defn list-option
   "Convert value and text info format suitable for a React list element
