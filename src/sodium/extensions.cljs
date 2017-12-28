@@ -7,7 +7,7 @@
    [reagent.core :as reagent]
    [re-frame.core :as re-frame]
    [re-frame.loggers :refer [console]]
-   [iron.re-utils :refer [<sub >evt]]
+   [iron.re-utils :refer [<sub >evt sub->fn event->fn]]
    [iron.utils :refer [ci-sort validate]]
    [sodium.core :as na]
    [sodium.utils :as utils]))
@@ -108,7 +108,7 @@
            class-of-tag-sub
            selected-class
            unselected-class]} tag]
-  (let [selected-tags (<sub selected-tags-sub #{})
+  (let [selected-tags (or ((sub->fn selected-tags-sub)) #{})
         selected? (contains? selected-tags tag)]
     [na/list-item {:key tag
                    :on-click #(>evt (conj set-selected-tags-event
@@ -162,8 +162,8 @@
 
   Options:
   - :all-tags-sub            - Re-frame subscription that returns the set of all tags
-  - :selected-tags-sub       - Re-frame subscription that returns the set of selected tags
-  - :set-selected-tags-event - Re-frame event that sets the set of selected tags
+  - :selected-tags-sub       - Function or re-frame subscription that returns the set of selected tags
+  - :set-selected-tags-event - Function or re-frame event that sets the external set of selected tags
   - :partial-tag-text        - Atom to use to hold text of new tag before it is added. This
                                parameter is not often needed, but is important if something
                                outside us needs to watch our exact state. I use this, for
@@ -176,7 +176,7 @@
          partial-tag-text        (reagent/atom "")}}]
   (fn []
     (let [all-tags (<sub all-tags-sub)
-          selected-tags (<sub selected-tags-sub #{})
+          selected-tags (or ((sub->fn selected-tags-sub)) #{})
           available-tags (ci-sort (clojure.set/difference all-tags selected-tags))
           list-id (str (gensym "tags-"))
           input-id (str (gensym "tags-input-"))]
@@ -199,8 +199,10 @@
                    :on-change (na/value->atom-fn partial-tag-text)
                    :action (when-not (empty? @partial-tag-text)
                              {:icon "add"
-                              :on-click #(let [tag (conj selected-tags @partial-tag-text)]
-                                           (>evt (conj set-selected-tags-event tag))
+                              :on-click #(let [tags (conj selected-tags @partial-tag-text)]
+                                           (if (vector? set-selected-tags-event)
+                                             (>evt (conj set-selected-tags-event tags))
+                                             (set-selected-tags-event tags))
                                            (reset! partial-tag-text "")
                                            ;; Need to clear field explicitly, because
                                            ;; :default-value above

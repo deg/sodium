@@ -35,12 +35,15 @@
   "Return a function that will collect the value from a
   react-semantic-ui dom event and pass it into an atom"
   ([atom] (value->atom-fn atom {}))
-  ([atom {:keys [default coercer] :or {coercer identity}}]
+  ([atom {:keys [default coercer assoc-path] :or {coercer identity}}]
    (fn [dom_event data]
-     (let [value (value dom_event data)]
-       (reset! atom (coercer (if (negligible? value)
-                               default
-                               value)))
+     (let [raw-value (value dom_event data)
+           value (coercer (if (negligible? raw-value)
+                            default
+                            raw-value))]
+       (if assoc-path
+         (swap! atom assoc-in assoc-path value)
+         (reset! atom value))
        ;; (See https://github.com/Day8/re-frame/wiki/Beware-Returning-False)
        nil))))
 
