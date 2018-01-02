@@ -67,6 +67,21 @@
        [na/rail {:position "right" :attached? true :class-name "errmsg"} error])]))
 
 
+;;; Working text-area
+;;; Semantic UI's text-area does not work smoothly with re-frame, for reasons that I
+;;; don't yet fully understand. Issues:
+;;; - :value does not behave right. It causes the cursor to jump to end of text after
+;;;   each input. This can be fixed by using :default-value instead, but that creates
+;;;   problems in situations where we need to inject a value after the component has
+;;;   been initialized.
+;;; - Text input is very slow, losing characters when typing fast.
+;;; [TODO] Really should fix this right, since I assume this code is losing other
+;;; niceties offered by Semantic UI's component.
+(defn native-text-area
+  "Simple HTML text-area, to bypass some problems in Semantic UI (temp?)"
+  [{:keys [on-change placeholder rows value] :as params}]
+  [:textarea params])
+
 
 ;;; TAGSONOMY
 

@@ -241,6 +241,7 @@ historical reasons and will probably change soon:
   - `nax/section-header` - Medium de-emphasized header.
   - `nax/subsection-header` - Small de-emphasized header.
   - `nax/labelled-field` - Form field with label and arbitrary content.
+  - `nax/native-text-area` - Workaround for some issues with Semantic UI's text-area component
 - Simple tagsonomy tag support. Management of a set of tag keywords, including the ability
   to select one or more. API:
   - `nax/draw-tags` - Component that draws a row of tags

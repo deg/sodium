@@ -4,6 +4,7 @@
 ### Changed
 _(nothing)_
 ### Added
+- nax/native-text-area component
 - Tagsonony tag API extended slightly, to accept function instead of subs and events in
   some cases. (Not complete; only did the parts I need now)
 - Add assoc-path option to value->event-fn, to allow updating value into part of an
