@@ -4,15 +4,23 @@
 ### Changed
 _(nothing)_
 ### Added
+_(nothing)_
+### Removed
+_(nothing)_
+### Fixed
+_(nothing)_
+
+## [0.10.0] - 2018-01-16
+### Changed
+- Updated Clojure dependency
+### Added
 - nax/native-text-area component
 - Tagsonony tag API extended slightly, to accept function instead of subs and events in
   some cases. (Not complete; only did the parts I need now)
 - Add assoc-path option to value->event-fn, to allow updating value into part of an
   atom.
-### Removed
-_(nothing)_
 ### Fixed
-_(nothing)_
+- Never return false from event handlers
 
 ## [0.9.0] - 2017-11-26
 ### Changed
@@ -103,6 +111,7 @@ _(nothing)_
 
 
 [Unreleased]: https://github.com/deg/sodium/compare/84b52a2...HEAD
+[0.10.0]:     https://github.com/deg/sodium/compare/84b52a2...HEAD
 [0.9.0]:      https://github.com/deg/sodium/compare/df877f2...84b52a2
 [0.8.0]:      https://github.com/deg/sodium/compare/f312445...df877f2
 [0.7.0]:      https://github.com/deg/sodium/compare/5ecf157...f312445
