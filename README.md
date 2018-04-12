@@ -86,7 +86,7 @@ UI from your re-frame projects. You can use it in several ways:
 
 Sodium offers the following in sodium.core (often `:refer`'d to as `na`)
 
-- `na/value->event-fn`, and `na/>value->atom-fn` - Useful in `:on-*` handlers to pass a
+- `na/value->event-fn`, and `na/value->atom-fn` - Useful in `:on-*` handlers to pass a
   value to a re-frame event or react atom. They return a function that can be used as a
   handler, which knows how to extract the relevant value from a semantic-ui component
   and pass it to a re-frame event or into an atom.  (Note carefully: these do not need
