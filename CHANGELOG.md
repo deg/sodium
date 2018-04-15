@@ -10,6 +10,12 @@ _(nothing)_
 ### Fixed
 _(nothing)_
 
+## [0.11.0] - 2018-4-15
+### Changed
+- Updated dependencies: CLJS 1.10.238; Soda-ash / Semantic-UI 0.78.2; re-frame 0.10.5; iron 0.3.0
+### Added
+- Many HTML5 global attributes
+
 ## [0.10.0] - 2018-01-16
 ### Changed
 - Updated Clojure dependency
@@ -28,7 +34,7 @@ _(nothing)_
   rely on Semantic-UI, has been moved to Iron.
 ### Removed
 - Many Sodium functions have been moved to Iron. If you can't find something, look in
-  Sodium.  (This library has few enough users that I'm going to be lazy and assume you
+  Iron.  (This library has few enough users that I'm going to be lazy and assume you
   can find anything that has moved. If you get stuck, give me a shout).
 ### Fixed
 _(nothing)_
