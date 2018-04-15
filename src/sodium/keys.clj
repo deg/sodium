@@ -29,12 +29,27 @@
               :class-name     ;; string
 
               ;; *** NOT LISTED IN DOC!
-              :dir
-              :id
               :key
-              :style
               :on-click
-              ])
+
+              ;; HTML(5) global attributes. From https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
+              :access-key
+              :autocapitalize
+              :contenteditable
+              :contextmenu
+              :dir
+              :draggable
+              :dropzone
+              :hidden
+              :id
+              :itemprop
+              :lang
+              :slot
+              :spellcheck
+              :style
+              :tabindex
+              :title
+              :translate])
 
 ;;; From https://react.semantic-ui.com/views/advertisement
 (add-key-set :advertisement
