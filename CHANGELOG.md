@@ -4,7 +4,7 @@
 ### Changed
 - Updated dependencies: Soda-ash / Semantic-UI 0.79.1, reagent 0.8.1, iron 0.4.0
 ### Added
-_(nothing)_
+- Support more parameters to input controls: :on-blur, :on-focus, :on-keyDown, :on-keyPress, and :on-KeyUp
 ### Removed
 _(nothing)_
 ### Fixed

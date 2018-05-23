@@ -47,5 +47,5 @@
 (defmacro def-simple-component [name parent key-sets]
   `(defcomponent ~name [params# & body#]
      {:sodium.core/key-sets ~key-sets}
-     (vconcat [~parent (camelize-map-keys params#)]
+     (vconcat [~parent (camelize-map-keys params# :exclude [:on-keyDown :on-keyPress :on-keyUp])]
                body#)))

@@ -340,7 +340,12 @@
               :label-position
               :list                    ;; *** NOT LISTED IN DOC!
               :loading
+              :on-blur                 ;; *** NOT LISTED IN DOC!
               :on-change
+              :on-focus                ;; *** NOT LISTED IN DOC!
+              :on-keyDown              ;; *** NOT LISTED IN DOC!
+              :on-keyPress             ;; *** NOT LISTED IN DOC!
+              :on-keyUp                ;; *** NOT LISTED IN DOC!
               :size
               :tab-index
               :transparent?
