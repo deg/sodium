@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Changed
-_(nothing)_
+- Updated dependencies: Soda-ash / Semantic-UI 0.79.1, reagent 0.8.1, iron 0.4.0
 ### Added
 _(nothing)_
 ### Removed

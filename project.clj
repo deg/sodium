@@ -7,9 +7,9 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [re-frame "0.10.5"]
-                 [reagent "0.7.0"]
-                 [soda-ash "0.78.2"]
-                 [com.degel/iron "0.3.0"]]
+                 [reagent "0.8.1"]
+                 [soda-ash "0.79.1"]
+                 [com.degel/iron "0.4.0"]]
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.8"]]
   :cljsbuild

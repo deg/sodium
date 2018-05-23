@@ -1,14 +1,5 @@
 # Sodium
 
-## ALERT
-
-Sodium 0.9.0 introduces incompatible changes.
-
-I have divided Sodium into two libraries. The Soda-ash/Semantic-UI code remains in
-Sodium. But all the more general utilities have been moved to a new library,
-[Iron](https://github.com/deg/iron). As of today, this is working well enough for me to
-use.  But there may be teething pains, so please let me know if you hit any snags.
-
 ## Introduction
 
 Sodium is a wrapper around [soda-ash](https://github.com/gadfly361/soda-ash) which,
@@ -34,6 +25,15 @@ and have only addded functionality that I need and can test.  Sodium will only g
 it helps me (or other contributers) accomplish what they need. If you need features now,
 PRs are welcome.
 
+#### ALERT
+
+Sodium 0.9.0 introduces incompatible changes.
+
+I have divided Sodium into two libraries. The Soda-ash/Semantic-UI code remains in
+Sodium. But all the more general utilities have been moved to a new library,
+[Iron](https://github.com/deg/iron). As of today, this is working well enough for me to
+use.  But there may be teething pains, so please let me know if you hit any snags.
+
 ### Background
 
 I used [re-com](https://github.com/Day8/re-com) in some of my earlier
@@ -55,7 +55,7 @@ re-frame integration of re-com. Sodium is an attempt to bridge this gap.
 Sodium is a wrapper around Soda-ash, Semantic UI React, and Semantic UI. Setup requires
 a couple of steps:
 
-- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.9.0"]`
+- Your project.clj should include a dependency on Sodium: `[com.degel/sodium "0.11.0"]`
   (Or, copy the clojars label above, if I forgot to update this line!)
 - It will probably (see below) also need a dependency on Soda-ash (currently `[soda-ash
   "0.76.0"]`, but see the [Soda-ash README](https://github.com/gadfly361/soda-ash) for
