@@ -9,7 +9,7 @@ adds two sets of features into the mix, both aimed at making it easier to includ
 Semantic UI in re-frame projects:
 
 1. Utility functions to get values out of Semantic-UI components. (See also similar,
-   though more general, support in Iron).
+   though more general, support in [Iron](https://github.com/deg/iron)).
 2. Validity-checking aids to help avoid typos.
 
 ### Why "Sodium"?
