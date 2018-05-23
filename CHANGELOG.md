@@ -2,13 +2,19 @@
 
 ## [Unreleased]
 ### Changed
-- Updated dependencies: Soda-ash / Semantic-UI 0.79.1, reagent 0.8.1, iron 0.4.0
+_(nothing)_
 ### Added
-- Support more parameters to input controls: :on-blur, :on-focus, :on-keyDown, :on-keyPress, and :on-KeyUp
+_(nothing)_
 ### Removed
 _(nothing)_
 ### Fixed
 _(nothing)_
+
+## [0.12.0]- 2018-5-23
+### Changed
+- Updated dependencies: Soda-ash / Semantic-UI 0.79.1, reagent 0.8.1, iron 0.4.0
+### Added
+- Support more parameters to input controls: :on-blur, :on-focus, :on-keyDown, :on-keyPress, and :on-KeyUp
 
 ## [0.11.0] - 2018-4-15
 ### Changed
@@ -116,7 +122,8 @@ _(nothing)_
 - Minor helper functions: `<sub`, `>evt`, etc.
 
 
-[Unreleased]: https://github.com/deg/sodium/compare/1be08d1...HEAD
+[Unreleased]: https://github.com/deg/sodium/compare/HEAD...HEAD
+[0.12.0]: https://github.com/deg/sodium/compare/1be08d1...HEAD
 [0.11.0]:     https://github.com/deg/sodium/compare/d693024...1be08d1
 [0.10.0]:     https://github.com/deg/sodium/compare/84b52a2...d693024
 [0.9.0]:      https://github.com/deg/sodium/compare/df877f2...84b52a2
