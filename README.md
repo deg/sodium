@@ -21,7 +21,7 @@ abbreviation used for the Soda-ash namespace. And, hey, I like bad puns.
 ### State of this project
 
 Sodium is still a early work in progress. I am using it to help me with other projects
-and have only addded functionality that I need and can test.  Sodium will only grow as
+and have only added functionality that I need and can test. Sodium will only grow as
 it helps me (or other contributers) accomplish what they need. If you need features now,
 PRs are welcome.
 
