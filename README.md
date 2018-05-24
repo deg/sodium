@@ -113,9 +113,9 @@ I am _not_ happy yet with these two names. Suggestions welcome.
                         :on-click (na/>value->event-fn [:login @email @password])}]])))
 ````
 
-These functions work equally with with Sodium components and bare Soda-ash ones. I
-recommend using Sodium components where available. But, see below, you will still often
-need to use Soda-ash components.
+These functions work equally with Sodium components and bare Soda-ash ones. I
+recommend using Sodium components where available. But, see below, you will
+still often need to use Soda-ash components.
 
 ### Lists
 
