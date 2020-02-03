@@ -135,6 +135,7 @@
               :default-open?
               :default-selected-label
               :default-value
+              :direction
               :disabled?
               :error?
               :floating?
@@ -176,6 +177,29 @@
               :upward?
               :value])
 
+
+;;; From https://react.semantic-ui.com/modules/dropdown (tab: Dropdown.Item)
+(add-key-set :dropdown-item
+             [:active?
+              :content
+              :description
+              :disabled?
+              :flag
+              :icon
+              :image
+              :label
+              :on-click
+              :selected?
+              :text
+              :value])
+
+
+;;; From https://react.semantic-ui.com/modules/dropdown (tab: Dropdown.Menu)
+(add-key-set :dropdown-menu
+             [:content
+              :direction
+              :open?
+              :scrolling?])
 
 
 ;;; From https://react.semantic-ui.com/collections/form
@@ -401,6 +425,31 @@
               :size
               :vertical-align])
 
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Content)
+(add-key-set :list-content
+             [:content
+              :description
+              :floated
+              :header
+              :vertical-align])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Description)
+(add-key-set :list-description
+             [:content])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Header)
+(add-key-set :list-header
+             [:content])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Icon)
+(add-key-set :list-icon
+             [:vertical-align])
+
+
 ;;; From https://react.semantic-ui.com/elements/list (tab: List.Item)
 (add-key-set :list-item
              [:active?
@@ -462,6 +511,27 @@
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Menu)
 (add-key-set :menu-menu
              [:position])
+
+
+;;; From https://react.semantic-ui.com/collections/message
+(add-key-set :message
+             [:attached
+              :color
+              :compact?
+              :content
+              :error?
+              :floating?
+              :header
+              :icon
+              :info?
+              :list
+              :negative?
+              :on-dismiss
+              :positive?
+              :size
+              :success?
+              :visible?
+              :warning?])
 
 
 ;;; From https://react.semantic-ui.com/modules/modal
