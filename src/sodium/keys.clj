@@ -171,7 +171,7 @@
               :selection
               :simple?
               :tab-index
-              :test
+              :text
               :trigger
               :upward?
               :value])
