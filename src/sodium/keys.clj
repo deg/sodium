@@ -81,8 +81,8 @@
               :secondary?     ;; bool
               :size           ;; enum: [mini tiny small medium large big huge massive]
               :tab-index      ;; number|string
-              :toggle?        ;; bool
-              ])
+              :toggle?])      ;; bool
+
 
 
 ;;; From https://react.semantic-ui.com/modules/checkbox
@@ -174,8 +174,8 @@
               :test
               :trigger
               :upward?
-              :value
-              ])
+              :value])
+
 
 
 ;;; From https://react.semantic-ui.com/collections/form
@@ -189,8 +189,8 @@
               :size
               :success?
               :warning?
-              :widths
-              ])
+              :widths])
+
 
 
 ;;; From https://react.semantic-ui.com/collections/form (tab: Form.Field)
@@ -202,8 +202,8 @@
               :label          ;; node|object (mutually exclusive with :children)
               :required?      ;; bool
               :type           ;; custom
-              :width          ;; enum: [1,,, 16, one,,, sixteen]
-              ])
+              :width])        ;; enum: [1,,, 16, one,,, sixteen]
+
 
 ;;; From https://react.semantic-ui.com/collections/form
 (add-key-set :form-group
@@ -273,8 +273,8 @@
               :size
               :sub?
               :subheader
-              :text-align
-              ])
+              :text-align])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/icon
@@ -291,13 +291,13 @@
               :loading?
               :name
               :rotated
-              :size
-              ])
+              :size])
+
 
 ;;; From https://react.semantic-ui.com/elements/icon (tab: Icon.Group)
 (add-key-set :icon-group
-             [:size
-              ])
+             [:size])
+
 
 ;;; From https://react.semantic-ui.com/elements/image
 (add-key-set :image
@@ -320,8 +320,8 @@
               :ui?
               :vertical-align
               :width
-              :wrapped
-              ])
+              :wrapped])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/input
@@ -349,16 +349,16 @@
               :size
               :tab-index
               :transparent?
-              :type
-              ])
+              :type])
+
 
 
 ;;; HTML input parameters not listed in the semantic-ui docs
 (add-key-set :input-html
              [:value
               :step
-              :placeholder
-              ])
+              :placeholder])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/label
@@ -435,14 +435,14 @@
               :tabular?
               :text?
               :vertical?
-              :widths
-              ])
+              :widths])
+
 
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Header)
 (add-key-set :menu-header
-             [:content
-              ])
+             [:content])
+
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Item)
 (add-key-set :menu-item
@@ -456,13 +456,13 @@
               :index
               :link?
               :name
-              :position
-              ])
+              :position])
+
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Menu)
 (add-key-set :menu-menu
-             [:position
-              ])
+             [:position])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal
 (add-key-set :modal
@@ -484,25 +484,25 @@
               :on-unmount
               :open?
               :size
-              :style
-              ])
+              :style])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Header)
 (add-key-set :modal-header
-             [:content
-              ])
+             [:content])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Content)
 (add-key-set :modal-content
              [:content
               :image?
-              :scrolling?
-              ])
+              :scrolling?])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Description)
 (add-key-set :modal-description
-             [
-              ])
+             [])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Actions)
 (add-key-set :modal-actions
@@ -568,8 +568,8 @@
               :stacked?
               :tertiary?
               :text-align
-              :vertical?
-              ])
+              :vertical?])
+
 
 ;;; From https://react.semantic-ui.com/elements/segment (tab: Segment.Group)
 (add-key-set :segment-group
