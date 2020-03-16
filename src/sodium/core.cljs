@@ -80,6 +80,7 @@
 (def-simple-component dropdown-menu     sa/DropdownMenu     [:basic :dropdown-menu])
 (def-simple-component divider           sa/Divider          [:basic :divider])
 (def-simple-component form              sa/Form             [:basic :form])
+(def-simple-component form-checkbox     sa/FormCheckbox     [:basic :form-field :checkbox])
 (def-simple-component form-input        sa/FormInput        [:basic :form-field :input :input-html])
 (def-simple-component form-group        sa/FormGroup        [:basic :form-group])
 (def-simple-component grid              sa/Grid             [:basic :grid])
