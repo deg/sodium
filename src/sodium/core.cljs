@@ -108,6 +108,7 @@
 (def-simple-component modal-content     sa/ModalContent     [:basic :modal-content])
 (def-simple-component modal-description sa/ModalDescription [:basic :modal-description])
 (def-simple-component modal-actions     sa/ModalActions     [:basic :modal-actions])
+(def-simple-component progress          sa/Progress         [:basic :progress])
 (def-simple-component rail              sa/Rail             [:basic :rail])
 (def-simple-component search            sa/Search           [:basic :search])
 (def-simple-component segment           sa/Segment          [:basic :segment])

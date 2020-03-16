@@ -610,6 +610,27 @@
               :on-action-click])
 
 
+;;; From https://react.semantic-ui.com/modules/progress
+(add-key-set :progress
+             [:active?
+              :attached
+              :auto-success
+              :color
+              :disabled?
+              :error?
+              :indicating?
+              :inverted?
+              :label
+              :percent
+              :precision
+              :progress
+              :size
+              :success?
+              :total
+              :value
+              :warning?])
+
+
 ;;; From https://react.semantic-ui.com/elements/rail
 (add-key-set :rail
              [:attached?
