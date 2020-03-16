@@ -51,6 +51,36 @@
               :title
               :translate])
 
+
+;;; From https://react.semantic-ui.com/modules/accordion
+(add-key-set :accordion
+             [:active-index
+              :default-active-index
+              :exclusive?
+              :fluid?
+              :inverted?
+              :on-title-click
+              :panels
+              :styled?])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Content)
+(add-key-set :accordion-content
+             [:active?])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Panel)
+(add-key-set :accordion-panel
+             [:active?
+              :content
+              :index
+              :on-title-click
+              :title])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Title)
+(add-key-set :accordion-title
+             [:active?
+              :icon
+              :index])
+
 ;;; From https://react.semantic-ui.com/views/advertisement
 (add-key-set :advertisement
              [:centered?

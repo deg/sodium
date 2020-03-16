@@ -67,6 +67,10 @@
 ;;; Components that we supply so far. More coming soon.
 ;;; The final argument here is the descriptor groups of the acceptable parameters.
 ;;; For more details about this, see keys.clj and macros.clj
+(def-simple-component accordion         sa/Accordion        [:basic :accordion])
+(def-simple-component accordion-content sa/AccordionContent [:basic :accordion-content])
+(def-simple-component accordion-panel   sa/AccordionPanel   [:basic :accordion-panel])
+(def-simple-component accordion-title   sa/AccordionTitle   [:basic :accordion-title])
 (def-simple-component advertisement     sa/Advertisement    [:basic :advertisement])
 (def-simple-component checkbox          sa/Checkbox         [:basic :checkbox])
 (def-simple-component container         sa/Container        [:basic :container])
