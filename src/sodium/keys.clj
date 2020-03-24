@@ -114,6 +114,56 @@
               :toggle?])      ;; bool
 
 
+;;; From https://react.semantic-ui.com/views/card
+(add-key-set :card
+             [:centered?
+              :color
+              :content
+              :description
+              :extra
+              :fluid?
+              :header
+              :href
+              :image
+              :link?
+              :meta
+              :on-click
+              :raised?])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Content)
+(add-key-set :card-content
+             [:content
+              :description
+              :extra?
+              :header
+              :meta
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Description)
+(add-key-set :card-description
+             [:content
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Group)
+(add-key-set :card-group
+             [:centered?
+              :content
+              :doubling?
+              :items
+              :items-per-row
+              :stackable?
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Header)
+(add-key-set :card-header
+             [:content
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Meta)
+(add-key-set :card-meta
+             [:content
+              :text-align])
+
 
 ;;; From https://react.semantic-ui.com/modules/checkbox
 (add-key-set :checkbox
