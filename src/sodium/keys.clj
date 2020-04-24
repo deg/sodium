@@ -301,6 +301,7 @@
 (add-key-set :form-field
              [:control        ;; custom (mutually exclusive with :children)
               :disabled?      ;; bool
+              :error          ;; custom
               :error?         ;; bool
               :inline?        ;; bool
               :label          ;; node|object (mutually exclusive with :children)
