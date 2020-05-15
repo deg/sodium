@@ -51,6 +51,36 @@
               :title
               :translate])
 
+
+;;; From https://react.semantic-ui.com/modules/accordion
+(add-key-set :accordion
+             [:active-index
+              :default-active-index
+              :exclusive?
+              :fluid?
+              :inverted?
+              :on-title-click
+              :panels
+              :styled?])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Content)
+(add-key-set :accordion-content
+             [:active?])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Panel)
+(add-key-set :accordion-panel
+             [:active?
+              :content
+              :index
+              :on-title-click
+              :title])
+
+;;; From https://react.semantic-ui.com/modules/accordion (tab: Accordion.Title)
+(add-key-set :accordion-title
+             [:active?
+              :icon
+              :index])
+
 ;;; From https://react.semantic-ui.com/views/advertisement
 (add-key-set :advertisement
              [:centered?
@@ -81,8 +111,58 @@
               :secondary?     ;; bool
               :size           ;; enum: [mini tiny small medium large big huge massive]
               :tab-index      ;; number|string
-              :toggle?        ;; bool
-              ])
+              :toggle?])      ;; bool
+
+
+;;; From https://react.semantic-ui.com/views/card
+(add-key-set :card
+             [:centered?
+              :color
+              :content
+              :description
+              :extra
+              :fluid?
+              :header
+              :href
+              :image
+              :link?
+              :meta
+              :on-click
+              :raised?])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Content)
+(add-key-set :card-content
+             [:content
+              :description
+              :extra?
+              :header
+              :meta
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Description)
+(add-key-set :card-description
+             [:content
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Group)
+(add-key-set :card-group
+             [:centered?
+              :content
+              :doubling?
+              :items
+              :items-per-row
+              :stackable?
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Header)
+(add-key-set :card-header
+             [:content
+              :text-align])
+
+;;; From https://react.semantic-ui.com/views/card (tab: Card.Meta)
+(add-key-set :card-meta
+             [:content
+              :text-align])
 
 
 ;;; From https://react.semantic-ui.com/modules/checkbox
@@ -135,6 +215,7 @@
               :default-open?
               :default-selected-label
               :default-value
+              :direction
               :disabled?
               :error?
               :floating?
@@ -171,11 +252,34 @@
               :selection
               :simple?
               :tab-index
-              :test
+              :text
               :trigger
               :upward?
-              :value
-              ])
+              :value])
+
+
+;;; From https://react.semantic-ui.com/modules/dropdown (tab: Dropdown.Item)
+(add-key-set :dropdown-item
+             [:active?
+              :content
+              :description
+              :disabled?
+              :flag
+              :icon
+              :image
+              :label
+              :on-click
+              :selected?
+              :text
+              :value])
+
+
+;;; From https://react.semantic-ui.com/modules/dropdown (tab: Dropdown.Menu)
+(add-key-set :dropdown-menu
+             [:content
+              :direction
+              :open?
+              :scrolling?])
 
 
 ;;; From https://react.semantic-ui.com/collections/form
@@ -189,21 +293,22 @@
               :size
               :success?
               :warning?
-              :widths
-              ])
+              :widths])
+
 
 
 ;;; From https://react.semantic-ui.com/collections/form (tab: Form.Field)
 (add-key-set :form-field
              [:control        ;; custom (mutually exclusive with :children)
               :disabled?      ;; bool
+              :error          ;; custom
               :error?         ;; bool
               :inline?        ;; bool
               :label          ;; node|object (mutually exclusive with :children)
               :required?      ;; bool
               :type           ;; custom
-              :width          ;; enum: [1,,, 16, one,,, sixteen]
-              ])
+              :width])        ;; enum: [1,,, 16, one,,, sixteen]
+
 
 ;;; From https://react.semantic-ui.com/collections/form
 (add-key-set :form-group
@@ -273,8 +378,8 @@
               :size
               :sub?
               :subheader
-              :text-align
-              ])
+              :text-align])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/icon
@@ -291,13 +396,13 @@
               :loading?
               :name
               :rotated
-              :size
-              ])
+              :size])
+
 
 ;;; From https://react.semantic-ui.com/elements/icon (tab: Icon.Group)
 (add-key-set :icon-group
-             [:size
-              ])
+             [:size])
+
 
 ;;; From https://react.semantic-ui.com/elements/image
 (add-key-set :image
@@ -320,8 +425,8 @@
               :ui?
               :vertical-align
               :width
-              :wrapped
-              ])
+              :wrapped])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/input
@@ -349,16 +454,16 @@
               :size
               :tab-index
               :transparent?
-              :type
-              ])
+              :type])
+
 
 
 ;;; HTML input parameters not listed in the semantic-ui docs
 (add-key-set :input-html
              [:value
               :step
-              :placeholder
-              ])
+              :placeholder])
+
 
 
 ;;; From https://react.semantic-ui.com/elements/label
@@ -401,6 +506,31 @@
               :size
               :vertical-align])
 
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Content)
+(add-key-set :list-content
+             [:content
+              :description
+              :floated
+              :header
+              :vertical-align])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Description)
+(add-key-set :list-description
+             [:content])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Header)
+(add-key-set :list-header
+             [:content])
+
+
+;;; From https://react.semantic-ui.com/elements/list (tab: List.Icon)
+(add-key-set :list-icon
+             [:vertical-align])
+
+
 ;;; From https://react.semantic-ui.com/elements/list (tab: List.Item)
 (add-key-set :list-item
              [:active?
@@ -435,14 +565,14 @@
               :tabular?
               :text?
               :vertical?
-              :widths
-              ])
+              :widths])
+
 
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Header)
 (add-key-set :menu-header
-             [:content
-              ])
+             [:content])
+
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Item)
 (add-key-set :menu-item
@@ -456,13 +586,34 @@
               :index
               :link?
               :name
-              :position
-              ])
+              :position])
+
 
 ;;; From https://react.semantic-ui.com/collections/menu (tab: Menu.Menu)
 (add-key-set :menu-menu
-             [:position
-              ])
+             [:position])
+
+
+;;; From https://react.semantic-ui.com/collections/message
+(add-key-set :message
+             [:attached
+              :color
+              :compact?
+              :content
+              :error?
+              :floating?
+              :header
+              :icon
+              :info?
+              :list
+              :negative?
+              :on-dismiss
+              :positive?
+              :size
+              :success?
+              :visible?
+              :warning?])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal
 (add-key-set :modal
@@ -484,30 +635,51 @@
               :on-unmount
               :open?
               :size
-              :style
-              ])
+              :style])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Header)
 (add-key-set :modal-header
-             [:content
-              ])
+             [:content])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Content)
 (add-key-set :modal-content
              [:content
               :image?
-              :scrolling?
-              ])
+              :scrolling?])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Description)
 (add-key-set :modal-description
-             [
-              ])
+             [])
+
 
 ;;; From https://react.semantic-ui.com/modules/modal (tab: Modal.Actions)
 (add-key-set :modal-actions
              [:actions
               :on-action-click])
+
+
+;;; From https://react.semantic-ui.com/modules/progress
+(add-key-set :progress
+             [:active?
+              :attached
+              :auto-success
+              :color
+              :disabled?
+              :error?
+              :indicating?
+              :inverted?
+              :label
+              :percent
+              :precision
+              :progress
+              :size
+              :success?
+              :total
+              :value
+              :warning?])
 
 
 ;;; From https://react.semantic-ui.com/elements/rail
@@ -568,8 +740,8 @@
               :stacked?
               :tertiary?
               :text-align
-              :vertical?
-              ])
+              :vertical?])
+
 
 ;;; From https://react.semantic-ui.com/elements/segment (tab: Segment.Group)
 (add-key-set :segment-group
